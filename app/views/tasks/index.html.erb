@@ -1,0 +1,29 @@
+<h1>Zadania</h1>
+
+<%= link_to "standardowe", tasks_path %> | <%= link_to "rozszerzone", tasks_path(tab: 'extend') %>
+
+<table>
+  <tr>
+    <th>Numer zadania</th>
+    <th>Max punktów</th>
+    <th>Typ zadania</th>
+  </tr>
+
+  <% if params[:tab].nil? %>
+    <% @tasks_standard.each do |task| %>
+      <tr>
+        <td><%= "#{task.task_number}.#{task.task_subnumber}" %></td>
+        <td><%= task.max_points %></td>
+        <td><%= task.task_type %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <% @tasks_extended.each do |task| %>
+      <tr>
+        <td><%= "#{task.task_number}.#{task.task_subnumber}" %></td>
+        <td><%= task.max_points %></td>
+        <td><%= task.task_type %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

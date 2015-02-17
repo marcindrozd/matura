@@ -1,0 +1,13 @@
+<h1>Grupa <%= @group.name %></h1>
+
+<h2>Uczniowie:</h2>
+
+<ul>
+<% @group.students.each do |student| %>
+  <li><%= student.student_name %></li>
+<% end %>
+</ul>
+
+<%= form_for [@group, @student] do |f| %>
+  <%= f.submit "Dodaj ucznia" %>
+<% end %>
