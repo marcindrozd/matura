@@ -1,0 +1,11 @@
+<h1>Dodaj oceny dla ucznia <%= @student.student_name %></h1>
+
+<%= form_for [@exam, @group, @student] do |f| %>
+  <%= @student.student_name %>
+  <br />
+  <%= f.fields_for :scores do |ff| %>
+    <%= ff.label :score, ff.object.task.task_number %>
+    <%= ff.text_field :score %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

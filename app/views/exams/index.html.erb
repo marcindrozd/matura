@@ -1,0 +1,5 @@
+<h1>Wszystkie egzaminy:</h1>
+
+<% @exams.each do |exam| %>
+  <li><%= link_to exam.year, exam %></li>
+<% end %>

@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
   end
 
   def new
+    @exam = Exam.find(params[:exam_id])
     @group = Group.new
   end
 
@@ -20,20 +21,23 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @exam = Exam.find(params[:exam_id])
     @group = Group.find(params[:id])
     @student = Student.new
   end
 
   def edit
+    @exam = Exam.find(params[:exam_id])
     @group = Group.find(params[:id])
   end
 
   def update
+    @exam = Exam.find(params[:exam_id])
     @group = Group.find(params[:id])
 
     if @group.update(group_params)
-      flash[:notice] = "Zaktualizowan grupę!"
-      redirect_to @group
+      flash[:notice] = "Zaktualizowano grupę!"
+      redirect_to exam_path(@exam)
     else
       render :edit
     end

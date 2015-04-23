@@ -11,13 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150217105706) do
+ActiveRecord::Schema.define(version: 20150217131801) do
+
+  create_table "exams", force: :cascade do |t|
+    t.integer  "year"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "groups", force: :cascade do |t|
     t.string   "name"
     t.string   "group_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "exam_id"
   end
 
   create_table "scores", force: :cascade do |t|
@@ -42,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150217105706) do
     t.integer  "max_points"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "exam_id"
   end
 
 end
