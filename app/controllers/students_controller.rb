@@ -27,7 +27,8 @@ class StudentsController < ApplicationController
     @exam = Exam.find(params[:exam_id])
     @group = Group.find(params[:group_id])
     @student = Student.find(params[:id])
-    update_student_scores
+
+    @student.update(score_params)
 
     redirect_to exam_group_path(@exam, @group)
   end
@@ -40,8 +41,8 @@ class StudentsController < ApplicationController
 
   private
 
-  def student_params
-    # params.require(:student).permit(:score => score.id.to_s => :score)
+  def score_params
+    params.require(:student).permit(scores_attributes: [:score, :id])
   end
 
   def update_student_scores
