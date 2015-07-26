@@ -1,8 +1,8 @@
 class TasksController < ApplicationController
 
   def index
-    @tasks_standard = Task.where(task_type: "standardowe")
-    @tasks_extended = Task.where(task_type: "rozszerzone")
+    @tasks_standard = Task.standard
+    @tasks_extended = Task.extended
   end
 
   def new

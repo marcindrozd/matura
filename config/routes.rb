@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   end
 
   resources :tasks
+
+  root 'exams#index'
 end

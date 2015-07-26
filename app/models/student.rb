@@ -3,5 +3,5 @@ class Student < ActiveRecord::Base
   has_many :scores
   has_many :tasks, through: :scores
 
-  accepts_nested_attributes_for :scores 
+  accepts_nested_attributes_for :scores
 end

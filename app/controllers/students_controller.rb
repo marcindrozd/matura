@@ -23,7 +23,6 @@ class StudentsController < ApplicationController
   end
 
   def update
-    binding.pry
     @exam = Exam.find(params[:exam_id])
     @group = Group.find(params[:group_id])
     @student = Student.find(params[:id])
@@ -43,14 +42,5 @@ class StudentsController < ApplicationController
 
   def score_params
     params.require(:student).permit(scores_attributes: [:score, :id])
-  end
-
-  def update_student_scores
-    @student.scores.each do |score|
-      updated_score = @student.scores.find(score.id)
-      updated_score[:score] = params[:student][:score][score.id.to_s][:score]
-      #updated_score[:score] = student_params
-      updated_score.save
-    end
   end
 end
