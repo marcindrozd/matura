@@ -1,20 +1,22 @@
 class GroupsController < ApplicationController
 
   def index
-    @groups = Group.all
+    @exam = Exam.find(params[:exam_id])
+    @groups = @exam.groups
   end
 
   def new
     @exam = Exam.find(params[:exam_id])
-    @group = Group.new
+    @group = @exam.groups.new
   end
 
   def create
-    @group = Group.new(group_params)
+    @exam = Exam.find(params[:exam_id])
+    @group = @exam.groups.new(group_params)
 
     if @group.save
       flash[:notice] = "Utworzono grupę!"
-      redirect_to groups_path
+      redirect_to exam_groups_url(@exam)
     else
       render :new
     end

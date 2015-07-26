@@ -3,11 +3,6 @@ class ExamsController < ApplicationController
     @exams = Exam.all
   end
 
-  def show
-    @exam = Exam.find(params[:id])
-    @groups = @exam.groups
-  end
-
   def new
     @exam = Exam.new
   end

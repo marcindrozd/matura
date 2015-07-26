@@ -1,9 +1,4 @@
-= form_for [@exam, @group] do |f|
-  = f.label :name, 'Nazwa grupy'
-  = f.text_field :name
-  %br/
-  = f.label :group_type, 'Typ'
-  = f.select :group_type do
-    = options_for_select([['dwujęzyczna'], ['rozszerzona']])
-  %br/
-  = f.submit value='Utwórz grupę'
+= simple_form_for [@exam, @group] do |f|
+  = f.input :name
+  = f.input :group_type, collection: ['dwujęzyczna', 'rozszerzona']
+  = f.button :submit

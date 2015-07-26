@@ -3,4 +3,4 @@
     %li= link_to 'Egzaminy', exams_path
     %ul
     - Exam.all.each do |exam|
-      %li= link_to exam.year, exam
+      %li= link_to exam.year, exam_groups_path(exam)

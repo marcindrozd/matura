@@ -8,7 +8,8 @@
       %td= group.name
       %td= group.group_type
       %td
-        = link_to 'Wyświetl', group
+        = link_to 'Wyświetl', [@exam, group]
         %br/
-        = link_to 'Edytuj', edit_group_path(group)
-= link_to 'Utwórz nową grupę', new_group_path
+        = link_to 'Edytuj', edit_exam_group_path(@exam, group)
+
+= link_to 'Utwórz nową grupę', new_exam_group_path(@exam)
