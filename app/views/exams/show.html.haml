@@ -1,0 +1,15 @@
+%h1
+  Egzamin z roku #{@exam.year}
+%h2 Grupy
+%table
+  %tr
+    %th Nazwa grupy
+    %th Typ grupy
+  - @groups.each do |group|
+    %tr
+      %td= group.name
+      %td= group.group_type
+      %td
+        = link_to 'Wyświetl', exam_group_path(@exam, group)
+        %br/
+        = link_to 'Edytuj', edit_exam_group_path(@exam, group)

@@ -1,0 +1,20 @@
+%h1 Zadania
+= link_to "standardowe", tasks_path
+| #{link_to "rozszerzone", tasks_path(tab: 'extend')}
+%table
+  %tr
+    %th Numer zadania
+    %th Max punktów
+    %th Typ zadania
+  - if params[:tab].nil?
+    - @tasks_standard.each do |task|
+      %tr
+        %td= "#{task.task_number}.#{task.task_subnumber}"
+        %td= task.max_points
+        %td= task.task_type
+  - else
+    - @tasks_extended.each do |task|
+      %tr
+        %td= "#{task.task_number}.#{task.task_subnumber}"
+        %td= task.max_points
+        %td= task.task_type

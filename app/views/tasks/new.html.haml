@@ -1,0 +1,15 @@
+%h1 Utwórz zadanie
+= form_for @task do |f|
+  = f.label :task_number
+  = f.text_field :task_number
+  %br/
+  = f.label :task_subnumber
+  = f.text_field :task_subnumber
+  %br/
+  = f.label :max_points
+  = f.text_field :max_points
+  %br/
+  = f.label :task_type
+  = f.text_field :task_type
+  %br/
+  = f.submit

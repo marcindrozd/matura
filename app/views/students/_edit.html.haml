@@ -1,0 +1,9 @@
+%h1
+  Dodaj oceny dla ucznia #{@student.student_name}
+= form_for [@exam, @group, @student] do |student_form|
+  = @student.student_name
+  %br/
+  - @student.tasks.each do |task|
+    - task.scores.each do |score|
+      = student_form.text_field score[:score]
+  = student_form.submit

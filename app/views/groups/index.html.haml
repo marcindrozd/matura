@@ -1,0 +1,14 @@
+%h1 List of groups
+%table
+  %tr
+    %th Nazwa grupy
+    %th Typ grupy
+  - @groups.each do |group|
+    %tr
+      %td= group.name
+      %td= group.group_type
+      %td
+        = link_to 'Wyświetl', group
+        %br/
+        = link_to 'Edytuj', edit_group_path(group)
+= link_to 'Utwórz nową grupę', new_group_path
