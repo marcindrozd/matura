@@ -8,13 +8,31 @@ class ExamsController < ApplicationController
     @groups = @exam.groups
   end
 
-  def scores
+  def new
+    @exam = Exam.new
+  end
+
+  def create
+    @exam = Exam.new(exam_params)
+
+    if @exam.save
+      redirect_to exams_path, notice: 'Dodano egzamin'
+    else
+      render :new
+    end
+  end
+
+  def edit
     @exam = Exam.find(params[:id])
-    @students = Student.all
-    @tasks = @exam.tasks
   end
 
   def update
-    binding.pry
+    @exam = Exam.find(params[:id])
+  end
+
+  private
+
+  def exam_params
+    params.require(:exam).permit(:year)
   end
 end
