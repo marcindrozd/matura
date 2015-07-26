@@ -1,4 +1,11 @@
 class StudentsController < ApplicationController
+  def index
+    @exam = Exam.find(params[:exam_id])
+    @group = Group.find(params[:group_id])
+    @students = @group.students
+    @student = Student.new
+  end
+
   def create
     @exam = Exam.find(params[:exam_id])
     @group = Group.find(params[:group_id])
@@ -7,7 +14,7 @@ class StudentsController < ApplicationController
 
     if @student.save
       flash[:notice] = "Dodano ucznia!"
-      redirect_to exam_group_path(@exam, @group)
+      redirect_to exam_group_students_path(@exam, @group)
     else
       render 'groups/show'
     end
@@ -34,7 +41,7 @@ class StudentsController < ApplicationController
 
   # count the occurrences of group_id to create next student
   def generate_name
-    next_student = Student.group(:group_id).count[params[:group_id].to_i]
+    next_student = Student.group(:group_id).count[params[:group_id].to_i] || 0
     "Student#{next_student + 1}"
   end
 
