@@ -1,5 +1,5 @@
 %h2 Wszystkie egzaminy:
 - @exams.each do |exam|
-  %li= link_to exam.year, exam_groups_path(exam)
+  %li= link_to exam.name, exam_groups_path(exam)
 
 = link_to 'Dodaj egzamin', new_exam_path

@@ -1,12 +1,17 @@
 class TasksController < ApplicationController
 
   def index
-    @tasks_standard = Task.standard
-    @tasks_extended = Task.extended
+    @exam = Exam.find(params[:exam_id])
+    @tasks = @exam.tasks
+    @tasks_standard = @exam.tasks.standard
+    @tasks_extended = @exam.tasks.extended
+    @tasks_bilingual = @exam.tasks.bilingual
+    @subtasks = @tasks.collect { |task| task.subtasks }
   end
 
   def new
-    @task = Task.new
+    @exam = Exam.find(params[:exam_id])
+    @task = @exam.tasks.new
   end
 
   def create

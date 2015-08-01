@@ -1,6 +1,6 @@
 class Exam < ActiveRecord::Base
-  has_many :tasks
-  has_many :groups
+  has_many :tasks, dependent: :destroy
+  has_many :groups, dependent: :destroy
 
-  validates :year, presence: true
+  validates :name, presence: true
 end

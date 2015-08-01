@@ -6,7 +6,7 @@
   - @groups.each do |group|
     %tr
       %td= group.name
-      %td= group.group_type
+      %td= group.kind
       %td
         = link_to 'Wyświetl', exam_group_students_path(@exam, group)
         %br/

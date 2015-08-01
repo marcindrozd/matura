@@ -9,7 +9,7 @@ class StudentsController < ApplicationController
   def create
     @exam = Exam.find(params[:exam_id])
     @group = Group.find(params[:group_id])
-    @student = @group.students.create(student_name: generate_name)
+    @student = @group.students.create(name: generate_name)
     @student.tasks = Task.all
 
     if @student.save
@@ -42,7 +42,7 @@ class StudentsController < ApplicationController
   # count the occurrences of group_id to create next student
   def generate_name
     next_student = Student.group(:group_id).count[params[:group_id].to_i] || 0
-    "Student#{next_student + 1}"
+    "Uczeń #{next_student + 1}"
   end
 
   private

@@ -1,9 +1,14 @@
 class Task < ActiveRecord::Base
-  belongs_to :exam
-  has_many :scores
-  has_many :students, through: :scores
 
-  scope :standard, -> { where task_type: 'podstawa' }
-  scope :extended, -> { where task_type: 'rozszerzenie' }
-  scope :bilingual, -> { where task_type: 'dwujęzyczna' }
+  LEVELS = %w{podstawa rozszerzenie dwujęzyczne}
+
+  belongs_to :exam
+  belongs_to :skill
+  has_many :subtasks, dependent: :destroy
+
+  accepts_nested_attributes_for :subtasks
+
+  scope :standard, -> { where level: 'podstawa' }
+  scope :extended, -> { where level: 'rozszerzenie' }
+  scope :bilingual, -> { where level: 'dwujęzyczne' }
 end

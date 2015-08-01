@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801122756) do
+ActiveRecord::Schema.define(version: 20150801131809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150801122756) do
   add_index "groups", ["exam_id"], name: "index_groups_on_exam_id", using: :btree
 
   create_table "scores", force: :cascade do |t|
-    t.integer  "task_id"
+    t.integer  "subtask_id"
     t.integer  "student_id"
     t.integer  "score"
     t.datetime "created_at"
@@ -53,11 +53,17 @@ ActiveRecord::Schema.define(version: 20150801122756) do
     t.datetime "updated_at"
   end
 
+  create_table "subtasks", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "max_points"
+    t.integer  "task_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.integer  "number"
-    t.string   "subnumber"
     t.string   "level"
-    t.integer  "max_points"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "exam_id"

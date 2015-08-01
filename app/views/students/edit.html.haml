@@ -1,7 +1,7 @@
 %h1
-  Dodaj oceny dla ucznia #{@student.student_name}
+  Dodaj oceny dla ucznia #{@student.name}
 = form_for [@exam, @group, @student] do |f|
-  = @student.student_name
+  = @student.name
   %br/
   = f.fields_for :scores, f.object.scores.for_tasks do |ff|
     = ff.label :score, "#{ff.object.task.task_number}.#{ff.object.task.task_subnumber}"
