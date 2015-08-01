@@ -15,11 +15,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @exam = Exam.find(params[:exam_id])
+    @task = @exam.tasks.new(task_params)
+    @task.skill = Skill.find_by_name(params[:task][:skill])
 
     if @task.save
-      flash[:notice] = "Task has been created!"
-      redirect_to tasks_path
+      redirect_to exam_tasks_url, notice: 'Task created!'
     else
       render :new
     end
@@ -28,6 +29,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:task_number, :task_subnumber, :max_points, :task_type)
+    params.require(:task).permit(:number, :level, subtasks_attributes: [:id, :name, :max_points, :_destroy])
   end
 end

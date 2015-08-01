@@ -14,6 +14,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'materialize-sass'
 
 gem 'simple_form'
+gem 'cocoon'
 
 group :development, :test do
   gem 'byebug'
