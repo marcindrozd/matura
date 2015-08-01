@@ -10,10 +10,10 @@
     %th Umiejętność
   - @subtasks.each do |subtask|
     %tr
-      %td subtask.task.number
-      %td subtask.name
-      %td subtask.max_points
-      %td subtask.task.skill.name
+      %td= subtask.task.number
+      %td= subtask.name
+      %td= subtask.max_points
+      %td= subtask.task.skill.name
 
   / - if params[:tab] == 'bilingual'
   /   - @tasks_bilingual.each do |task|

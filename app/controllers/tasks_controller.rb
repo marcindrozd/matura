@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     @tasks_standard = @exam.tasks.standard
     @tasks_extended = @exam.tasks.extended
     @tasks_bilingual = @exam.tasks.bilingual
-    @subtasks = @tasks.collect { |task| task.subtasks }
+    @subtasks = @tasks.map { |task| task.subtasks }.flatten
   end
 
   def new
