@@ -3,6 +3,7 @@ class Task < ActiveRecord::Base
   has_many :scores
   has_many :students, through: :scores
 
-  scope :standard, -> { where task_type: 'standardowe' }
-  scope :extended, -> { where task_type: 'rozszerzone' }
+  scope :standard, -> { where task_type: 'podstawa' }
+  scope :extended, -> { where task_type: 'rozszerzenie' }
+  scope :bilingual, -> { where task_type: 'dwujęzyczna' }
 end
