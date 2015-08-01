@@ -21,6 +21,7 @@ class TasksController < ApplicationController
 
     if @task.save
       redirect_to exam_tasks_url, notice: 'Task created!'
+      TaskScoresHandler.new(@exam, @task).add_task_to_all_students
     else
       render :new
     end

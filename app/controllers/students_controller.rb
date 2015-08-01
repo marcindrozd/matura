@@ -10,11 +10,10 @@ class StudentsController < ApplicationController
     @exam = Exam.find(params[:exam_id])
     @group = Group.find(params[:group_id])
     @student = @group.students.create(name: generate_name)
-    @student.tasks = Task.all
 
     if @student.save
-      flash[:notice] = "Dodano ucznia!"
-      redirect_to exam_group_students_path(@exam, @group)
+      redirect_to exam_group_students_path(@exam, @group), notice: 'Dodano ucznia'
+      StudentScoresHandler.new(@exam, @student).add_all_tasks_to_student
     else
       render 'groups/show'
     end
@@ -39,13 +38,12 @@ class StudentsController < ApplicationController
     redirect_to exam_group_path(@exam, @group)
   end
 
-  # count the occurrences of group_id to create next student
+  private
+
   def generate_name
     next_student = Student.group(:group_id).count[params[:group_id].to_i] || 0
     "Uczeń #{next_student + 1}"
   end
-
-  private
 
   def score_params
     params.require(:student).permit(scores_attributes: [:score, :id])
