@@ -1,14 +1,3 @@
 %h1 Utwórz zadanie
-= simple_form_for [@exam, @task] do |f|
-  = f.input :number
 
-  #subtasks
-  = f.simple_fields_for :subtasks do |subtask|
-    = render 'subtask_fields', f: subtask
-
-  .links
-    = link_to_add_association 'add subtask', f, :subtasks
-
-  = f.input :skill, collection: Skill.pluck(:name)
-  = f.input :level, collection: Task::LEVELS
-  = f.button :submit
+= render 'form'

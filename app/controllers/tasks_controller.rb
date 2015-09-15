@@ -27,6 +27,23 @@ class TasksController < ApplicationController
     end
   end
 
+  def edit
+    @exam = Exam.find(params[:exam_id])
+    @task = @exam.tasks.find(params[:id])
+  end
+
+  def update
+    @exam = Exam.find(params[:exam_id])
+    @task = @exam.tasks.find(params[:id])
+
+    if @task.update(task_params)
+      redirect_to exam_tasks_url, notice: 'Task updated!'
+      TaskScoresHandler.new(@exam, @task).add_task_to_all_students
+    else
+      render :edit
+    end
+  end
+
   private
 
   def task_params

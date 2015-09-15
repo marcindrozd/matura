@@ -8,6 +8,8 @@ class Task < ActiveRecord::Base
 
   accepts_nested_attributes_for :subtasks
 
+  validates_uniqueness_of :number, scope: [:exam_id, :level]
+
   scope :standard, -> { where level: 'podstawa' }
   scope :extended, -> { where level: 'rozszerzenie' }
   scope :bilingual, -> { where level: 'dwujęzyczne' }
