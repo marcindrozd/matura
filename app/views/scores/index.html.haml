@@ -1,0 +1,13 @@
+%h2 Enter scores
+
+%table
+  %tr
+    %th Uczeń
+    - @students.first.scores.each do |score|
+      %th= score.subtask.task.number
+
+  - @students.each do |student|
+    %tr
+      %td= student.name
+      - student.scores.each do |score|
+        %td= score.score 

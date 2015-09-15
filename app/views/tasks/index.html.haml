@@ -1,40 +1,14 @@
 %h1 Zadania
-/ = link_to 'standardowe', exam_tasks_path(@exam)
-/ | #{link_to 'rozszerzone', exam_tasks_path(@exam, tab: 'extend')}
-/ | #{link_to 'dwujęzyczne', exam_tasks_path(@exam, tab: 'bilingual')}
+
 %table
   %tr
     %th Numer zadania
-    %th Podtytuł
-    %th Max punktów
     %th Umiejętność
-  - @subtasks.each do |subtask|
+    %th Akcje
+  - @tasks.each do |task|
     %tr
-      %td= subtask.task.number
-      %td= subtask.name
-      %td= subtask.max_points
-      %td= subtask.task.skill.name
-
-  / - if params[:tab] == 'bilingual'
-  /   - @tasks_bilingual.each do |task|
-  /     %tr
-  /       %td= task.number
-  /       - task.each do |subtask|
-
-  /       %td= task.max_points
-  /       %td= task.level
-  / - elsif params[:tab] == 'extend'
-  /   - @tasks_extended.each do |task|
-  /     %tr
-  /       %td= "#{task.number}.#{task.subtask.name}"
-  /       %td= task.max_points
-  /       %td= task.level
-  / - else
-  /   - @tasks_standard.each do |task|
-  /     %tr
-  /       %td= "#{task.number}.#{task.subnumber}"
-  /       %td= task.max_points
-  /       %td= task.level
-
+      %td= task.number
+      %td= task.skill.name
+      %td= link_to 'Edytuj zadanie', edit_exam_task_path(@exam, task)
 
 = link_to 'Dodaj zadanie', new_exam_task_path(@exam)

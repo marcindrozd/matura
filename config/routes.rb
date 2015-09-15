@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :students
     end
     resources :tasks
+    resources :scores
   end
 
   resources :skills
