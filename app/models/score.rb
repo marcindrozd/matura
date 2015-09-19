@@ -2,7 +2,7 @@ class Score < ActiveRecord::Base
   belongs_to :student
   belongs_to :subtask
 
-  def self.for_tasks
-    joins(:task).where(tasks: { task_type: "standardowe" })
-  end
+  scope :standard, -> { joins(subtask: :task).where('tasks.level = ?', 'podstawa') }
+  scope :extended, -> { joins(subtask: :task).where('tasks.level = ?', 'rozszerzenie') }
+  scope :bilingual, -> { joins(subtask: :task).where('tasks.level = ?', 'dwujęzyczne') }
 end

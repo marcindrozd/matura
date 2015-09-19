@@ -5,6 +5,7 @@ class Task < ActiveRecord::Base
   belongs_to :exam
   belongs_to :skill
   has_many :subtasks, dependent: :destroy
+  has_many :students, through: :subtasks
 
   accepts_nested_attributes_for :subtasks
 

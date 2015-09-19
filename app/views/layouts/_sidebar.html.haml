@@ -1,7 +1,9 @@
-%ul
-  %li= link_to 'Egzaminy', exams_path
-  %ul
-  - Exam.all.each do |exam|
-    %li= link_to exam.name, exam_groups_path(exam)
-    %ul
-      = link_to 'Zadania', exam_tasks_path(exam)
+.main-nav
+  .nav
+    %ul.nav
+      %li= link_to 'Egzaminy', exams_path
+      %ul
+      - Exam.all.each do |exam|
+        %li= link_to exam.name, exam_groups_path(exam)
+        %ul
+          = link_to 'Zadania', exam_tasks_path(exam)

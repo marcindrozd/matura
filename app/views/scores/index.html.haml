@@ -1,13 +1,51 @@
 %h2 Enter scores
 
-%table
-  %tr
-    %th Uczeń
-    - @students.first.scores.each do |score|
-      %th= score.subtask.task.number
+%ul.accordion-tabs-minimal
+  %li.tab-header-and-content
+    %a.tab-link.is-active{:href => "#"} Podstawa
+    .tab-content
+      %table
+        %tr
+          %th Uczeń
+          - @tasks.standard.each do |task|
+            - task.subtasks.each do |subtask|
+              %th= subtask
 
-  - @students.each do |student|
-    %tr
-      %td= student.name
-      - student.scores.each do |score|
-        %td= score.score 
+        - @group.students.each do |student|
+          %tr
+            %td= student.name
+            - student.scores.standard.each do |score|
+              %td= score.score
+
+
+  %li.tab-header-and-content
+    %a.tab-link{:href => "#"} Rozszerzenie
+    .tab-content
+      %table
+        %tr
+          %th Uczeń
+          - @tasks.extended.each do |task|
+            - task.subtasks.each do |subtask|
+              %th= subtask
+
+        - @group.students.each do |student|
+          %tr
+            %td= student.name
+            - student.scores.extended.each do |score|
+              %td= score.score
+
+  %li.tab-header-and-content
+    %a.tab-link{:href => "#"} Dwujęzyczne
+    .tab-content
+      %table
+        %tr
+          %th Uczeń
+          - @tasks.bilingual.each do |task|
+            - task.subtasks.each do |subtask|
+              %th= subtask
+
+        - @group.students.each do |student|
+          %tr
+            %td= student.name
+            - student.scores.bilingual.each do |score|
+              %td= score.score
