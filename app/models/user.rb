@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   ROLES = %w(admin teacher)
 
-  has_many :groups
+  has_and_belongs_to_many :groups
 
   validates :email, :username, presence: true, uniqueness: true
   validates :first_name, :last_name, presence: true

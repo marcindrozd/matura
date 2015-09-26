@@ -15,6 +15,7 @@ gem 'bourbon'
 gem 'neat'
 
 gem 'devise'
+gem 'simple-navigation'
 
 gem 'simple_form'
 gem 'cocoon'
