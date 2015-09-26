@@ -3,13 +3,16 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title Matura
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
-    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
     = csrf_meta_tags
-  %body
+  %body.cbp-spmenu-push
     = render 'layouts/application/header'
     = render 'layouts/application/sidebar'
     = render 'layouts/application/js'
+
+    %button{ id: "showLeft" } Show/Hide Left Slide Menu
+    %button{ id: "showLeftPush" } Show/Hide Left Push Menu
 
     %section#content
       = yield

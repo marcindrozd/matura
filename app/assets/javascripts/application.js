@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require cocoon
-//= require turbolinks
+//= require application/init
 //= require_tree ./components
+//= require_tree ./vendor
