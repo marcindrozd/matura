@@ -7,18 +7,15 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %input{ type: 'checkbox', id: 'sidebartoggler' }
+    = render 'layouts/application/header'
+    = render 'layouts/application/sidebar'
+    = render 'layouts/application/js'
 
-    .wrapper
-      %label{ for: 'sidebartoggler', class: 'nav-toggle' }☰
+    %section#content
+      = yield
 
-      %aside.sidebar
-        = render 'layouts/sidebar'
+      %aside#flash
+        - flash.each do |key, value|
+          .flash{ class: key }= value
 
-      .page-content
-        = yield
-
-    .notice
-      = notice
-    .alert
-      = alert
+    = yield :js

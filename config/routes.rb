@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :exams do
-    resources :groups do
-      resources :students
-      resources :scores
-    end
+
+  namespace :admin do
+    resources :exams
+    resources :users
+    resources :groups
+    resources :skills
+    resources :students
     resources :tasks
   end
-
-  resources :skills
 
   root 'exams#index'
 end
