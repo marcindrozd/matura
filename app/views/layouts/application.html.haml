@@ -6,7 +6,7 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
-  %body    
+  %body
     %input{ type: 'checkbox', id: 'sidebartoggler' }
 
     .wrapper
@@ -17,3 +17,8 @@
 
       .page-content
         = yield
+
+    .notice
+      = notice
+    .alert
+      = alert

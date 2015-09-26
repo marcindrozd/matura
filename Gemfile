@@ -14,6 +14,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'bourbon'
 gem 'neat'
 
+gem 'devise'
+
 gem 'simple_form'
 gem 'cocoon'
 
