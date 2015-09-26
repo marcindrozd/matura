@@ -2,6 +2,20 @@
   background: #47a3da
   position: fixed
 
+  .toggler
+    position: fixed
+    padding: 56px 12px
+    background: #47a3da
+    margin-left: 240px
+    height: 100%
+    top: 0
+
+    &:hover
+      cursor: pointer
+
+    .text-toggler
+      transform: rotate(90deg)
+
   h3
     color: #afdefa
     font-size: 1.9em
@@ -39,18 +53,11 @@
   &.cbp-spmenu-open
     left: 0px
 
-.cbp-spmenu-push
-  overflow-x: hidden
-  position: relative
-  left: 0
-
-.cbp-spmenu-push-toright
-  left: 240px
-
-.cbp-spmenu, .cbp-spmenu-push
+.cbp-spmenu
   -webkit-transition: all 0.3s ease
   -moz-transition: all 0.3s ease
   transition: all 0.3s ease
+  z-index: 9999
 
 /* media queries
 
@@ -58,6 +65,11 @@
   .cbp-spmenu-vertical
     font-size: 90%
     width: 190px
-    
-  .cbp-spmenu-left, .cbp-spmenu-push-toleft
+    z-index: 9999
+
+  .cbp-spmenu-left
     left: -190px
+
+  .cbp-spmenu
+    .toggler
+      margin-left: 190px
