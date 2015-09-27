@@ -1,0 +1,9 @@
+pl:
+  activerecord:
+    attributes:
+      user:
+        username: Login
+        first_name: Imię
+        last_name: Nazwisko
+        email: Email
+        role: Rola
