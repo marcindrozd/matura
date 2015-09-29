@@ -12,4 +12,19 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :first_name
     devise_parameter_sanitizer.for(:sign_up) << :last_name
   end
+
+  def after_sign_out_path_for(resource)
+    new_user_session_url
+  end
+
+  def after_sign_in_path_for(user)
+    stored_location_for(user) ||
+      if user.has_role? :admin
+        root_url
+      elsif user.has_role? :teacher
+        root_url
+      else
+        root_url
+      end
+  end
 end
