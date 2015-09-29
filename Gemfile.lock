@@ -48,6 +48,7 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
+    cancancan (1.12.0)
     cocoon (1.2.6)
     coderay (1.1.0)
     coffee-rails (4.1.0)
@@ -223,6 +224,7 @@ PLATFORMS
 DEPENDENCIES
   bourbon
   byebug
+  cancancan (~> 1.10)
   cocoon
   coffee-rails (~> 4.1.0)
   devise

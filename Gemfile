@@ -16,6 +16,7 @@ gem 'bourbon'
 gem 'neat'
 
 gem 'devise'
+gem 'cancancan', '~> 1.10'
 gem 'simple-navigation'
 
 gem 'simple_form'
