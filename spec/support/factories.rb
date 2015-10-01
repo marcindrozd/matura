@@ -15,4 +15,9 @@ FactoryGirl.define do
   factory :exam do
     sequence(:name) { |n| "exam#{n}" }
   end
+
+  factory :group do
+    sequence(:name) { |n| "group#{n}" }
+    kind Group::KINDS.sample
+  end
 end
