@@ -10,6 +10,8 @@ describe Admin::GroupsController do
   describe '#index' do
     it 'renders page successfully' do
       get :index, exam_id: exam.id
+
+      expect(assigns(:groups)).to eq([group])
       expect(response).to be_success
     end
   end
@@ -17,6 +19,8 @@ describe Admin::GroupsController do
   describe '#edit' do
     it 'renders page successfully' do
       get :edit, exam_id: exam.id, id: group.id
+
+      expect(assigns(:group)).to eq(group)
       expect(response).to be_success
     end
   end
@@ -24,6 +28,8 @@ describe Admin::GroupsController do
   describe '#new' do
     it 'renders page successfully' do
       get :new, exam_id: exam.id
+
+      expect(assigns(:group)).to be_instance_of(Group)
       expect(response).to be_success
     end
   end

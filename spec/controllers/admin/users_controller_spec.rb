@@ -9,6 +9,8 @@ describe Admin::UsersController do
   describe '#index' do
     it 'renders page successfully' do
       get :index
+
+      expect(assigns(:users)).to match_array([admin_user, user])
       expect(response).to be_success
     end
   end
@@ -16,6 +18,8 @@ describe Admin::UsersController do
   describe '#edit' do
     it 'renders page successfully' do
       get :edit, id: user.id
+
+      expect(assigns(:user)).to eq(user)
       expect(response).to be_success
     end
   end
@@ -23,6 +27,8 @@ describe Admin::UsersController do
   describe '#new' do
     it 'renders page successfully' do
       get :new
+
+      expect(assigns(:user)).to be_instance_of(User)
       expect(response).to be_success
     end
   end

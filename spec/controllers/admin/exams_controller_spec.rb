@@ -9,6 +9,8 @@ describe Admin::ExamsController do
   describe '#index' do
     it 'renders page successfully' do
       get :index
+
+      expect(assigns(:exams)).to eq([exam])
       expect(response).to be_success
     end
   end
@@ -16,6 +18,8 @@ describe Admin::ExamsController do
   describe '#edit' do
     it 'renders page successfully' do
       get :edit, id: exam.id
+
+      expect(assigns(:exam)).to eq(exam)
       expect(response).to be_success
     end
   end
@@ -23,6 +27,8 @@ describe Admin::ExamsController do
   describe '#new' do
     it 'renders page successfully' do
       get :new
+
+      expect(assigns(:exam)).to be_instance_of(Exam)
       expect(response).to be_success
     end
   end
