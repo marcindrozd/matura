@@ -1,0 +1,5 @@
+= simple_form_for [:admin, @group] do |f|
+  = f.input :name
+  = f.input :kind, collection: Group::KINDS
+
+  = f.button :submit

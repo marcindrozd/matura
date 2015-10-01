@@ -24,10 +24,12 @@ SimpleNavigation::Configuration.run do |navigation|
   admin_navigation = lambda do |nav|
     nav.item :users, label(:users, :users), admin_users_path,
       highlights_on: %r{^/admin/users}
-    nav.item :groups, label(:exams, :'shopping-cart'), admin_exams_path,
-      highlights_on: %r{^/admin/exams}
     nav.item :skills, label(:skills, :users), admin_skills_path,
       highlights_on: %r{^/admin/skills}
+    nav.item :skills, label(:groups, :users), admin_groups_path,
+      highlights_on: %r{^/admin/skills}
+    nav.item :groups, label(:exams, :'shopping-cart'), admin_exams_path,
+      highlights_on: %r{^/admin/exams}
   end
 
   if signed_in?

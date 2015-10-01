@@ -5,6 +5,6 @@ class Group < ActiveRecord::Base
   has_and_belongs_to_many :teachers, class_name: User.name
   has_many :students, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { scope: :exam }
   validates :kind, presence: true, inclusion: { in: KINDS }
 end

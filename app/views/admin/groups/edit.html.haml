@@ -1,0 +1,7 @@
+%h1= @group.name
+
+.actions
+  = link_to t('destroy'), admin_group_path(@group), method: :destroy, data: { confirm: t('confirm_delete') }
+  = link_to t('back'), admin_groups_path
+
+= render 'form'

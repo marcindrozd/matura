@@ -1,0 +1,18 @@
+%h1= t('.title')
+
+.actions
+  = link_to t('.new_group'), new_admin_group_path
+
+%table
+  %tr
+    %th= t('number')
+    %th= ta(Group, :name)
+    %th= ta(Group, :kind)
+    %th= t('actions')
+
+  - @groups.each_with_index do |group, idx|
+    %tr
+      %td= idx + 1
+      %td= group.name
+      %td= group.kind
+      %td= link_to t('edit'), edit_admin_group_path(group)
