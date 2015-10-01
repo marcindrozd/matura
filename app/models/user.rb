@@ -12,6 +12,6 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, presence: true
 
   def has_role?(role)
-    self.role == role
+    self.role == role.to_s
   end
 end
