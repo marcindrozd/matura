@@ -1,1 +1,16 @@
-%h1 Hello
+%h1= t('.title')
+
+.actions
+  = link_to t('.new_exam'), new_admin_exam_path
+
+%table
+  %tr
+    %th= t('number')
+    %th= ta(Exam, :name)
+    %th= t('actions')
+
+  - @exams.each_with_index do |exam, idx|
+    %tr
+      %td= idx + 1
+      %td= exam.name
+      %td= link_to t('edit'), edit_admin_exam_path(exam)
