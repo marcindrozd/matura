@@ -6,7 +6,8 @@
     %nav{:role => "navigation"}
       %ul#js-navigation-menu.navigation-menu.show
         %li.nav-link.more
-          %a{:href => "javascript:void(0)"} Actions
+          = fa_link current_exam, '#', 'caret-down'
           %ul.submenu
-            %li
-              %a{:href => "javascript:void(0)"} Log Out
+            - available_exams.reject{ |exam| exam == current_exam }.each do |exam|
+              %li= link_to exam, set_current_exam_path(exam), method: :put
+        %li= fa_link "#{t('sign_out')} #{current_user.first_name}", destroy_user_session_path, 'power-off', method: :delete

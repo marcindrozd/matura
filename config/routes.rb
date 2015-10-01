@@ -10,5 +10,9 @@ Rails.application.routes.draw do
     resources :tasks
   end
 
-  root 'exams#index'
+  resources :exams, only: [] do
+    put :set_current, on: :member
+  end
+
+  root 'admin/exams#index'
 end
