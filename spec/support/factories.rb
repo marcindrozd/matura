@@ -11,4 +11,8 @@ FactoryGirl.define do
     password 'password'
     role 'teacher'
   end
+
+  factory :exam do
+    sequence(:name) { |n| "exam#{n}" }
+  end
 end
