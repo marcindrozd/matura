@@ -1,0 +1,7 @@
+%h1= "#{@task.number} - #{@task.level}"
+
+.actions
+  = link_to t('destroy'), admin_task_path(@task), method: :destroy, data: { confirm: t('confirm_delete') }
+  = link_to t('back'), admin_tasks_path
+
+= render 'form'
