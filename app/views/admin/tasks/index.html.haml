@@ -1,0 +1,21 @@
+.page-header
+  %h1= tc_few(Task)
+
+.users-list
+  %table
+    %tr
+      %th= t('number')
+      %th= ta(Task, :number)
+      %th= tc_few(Subtask)
+      %th= tc(Skill)
+      %th= ta(Task, :level)
+      %th= t('actions')
+
+    - @tasks.each_with_index do |task, idx|
+      %tr
+        %td= idx + 1
+        %td= task.number
+        %td= task.subtasks_list
+        %td= task.skill
+        %td= task.level
+        %td= link_to t('edit'), edit_admin_task_path(task)

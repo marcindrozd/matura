@@ -11,7 +11,13 @@ class Task < ActiveRecord::Base
 
   validates_uniqueness_of :number, scope: [:exam_id, :level]
 
+  default_scope { order(:number) }
+
   scope :standard, -> { where level: 'podstawa' }
   scope :extended, -> { where level: 'rozszerzenie' }
   scope :bilingual, -> { where level: 'dwujęzyczne' }
+
+  def subtasks_list
+    subtasks.map { |s| s.number }.compact.join(', ')
+  end
 end
