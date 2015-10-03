@@ -8,6 +8,6 @@
   .links
     = link_to_add_association 'add subtask', f, :subtasks
 
-  = f.input :skill, collection: Skill.pluck(:name)
+  = f.input :skill, collection: Task::SKILLS
   = f.input :level, collection: Task::LEVELS
   = f.button :submit

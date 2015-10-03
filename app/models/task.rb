@@ -1,9 +1,9 @@
 class Task < ActiveRecord::Base
 
   LEVELS = %w{podstawa rozszerzenie dwujęzyczne}
+  SKILLS = %w{listening reading grammar writing}
 
   belongs_to :exam
-  belongs_to :skill
   has_many :subtasks, dependent: :destroy
   has_many :students, through: :subtasks
 

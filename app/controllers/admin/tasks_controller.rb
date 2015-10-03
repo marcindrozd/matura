@@ -1,5 +1,5 @@
 class Admin::TasksController < Admin::BaseController
-  load_and_authorize_resource
+  load_and_authorize_resource through: :current_exam
 
   def index
   end
@@ -9,7 +9,7 @@ class Admin::TasksController < Admin::BaseController
 
   def create
     if @task.save
-      redirect_to admin_edit_task_path(@task)
+      redirect_to edit_admin_task_path(@task)
     else
       render :new
     end
@@ -20,7 +20,7 @@ class Admin::TasksController < Admin::BaseController
 
   def update
     if @task.update(task_params)
-      redirect_to admin_edit_task_path(@task)
+      redirect_to edit_admin_task_path(@task)
     else
       render :edit
     end
