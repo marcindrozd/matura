@@ -1,0 +1,16 @@
+.page-header
+  %h1= tc_few(Student)
+
+.users-list
+  %table
+    %tr
+      %th= t('number')
+      %th= ta(Student, :name)
+
+    - @students.each_with_index do |student, idx|
+      %tr
+        %td= idx + 1
+        %td= student.name
+
+= link_to t('.add_student'), admin_group_students_path(@group), method: :post
+= link_to t('.amend_students_number'), admin_group_students_path(@group), method: :put

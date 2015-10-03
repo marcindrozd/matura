@@ -4,4 +4,8 @@
   = link_to t('destroy'), admin_group_path(@group), method: :destroy, data: { confirm: t('confirm_delete') }
   = link_to t('back'), admin_groups_path
 
+%p= "#{t('.number_of_students')}: #{@group.students.count}"
+.sub-actions
+  = link_to t('.add_students'), admin_group_students_path(@group)
+
 = render 'form'

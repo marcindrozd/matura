@@ -4,9 +4,12 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :exams
     resources :users
-    resources :groups
-    resources :students
     resources :tasks
+    resources :groups do
+      resources :students, only: [:index, :create] do
+        put :update, on: :collection
+      end
+    end
   end
 
   resources :exams, only: [] do
