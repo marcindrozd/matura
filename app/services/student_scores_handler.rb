@@ -1,16 +1,16 @@
 class StudentScoresHandler
+  attr_accessor :exam, :student
+
   def initialize(exam, student)
     @exam = exam
     @student = student
   end
 
   def add_all_tasks_to_student
-    subtasks = @exam.tasks.map { |t| t.subtasks }.flatten
-
-    subtasks.each do |task|
-      @student.scores << task.scores.create
+    exam.subtasks.each do |subtask|
+      student.scores << subtask.scores.create
     end
 
-    @student.save
+    student.save
   end
 end

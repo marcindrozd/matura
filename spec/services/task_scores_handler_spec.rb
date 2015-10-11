@@ -1,22 +1,20 @@
 require 'rails_helper'
 
 describe TaskScoresHandler do
-  # it 'adds newly created task to all existing students' do
-  #   exam = Exam.create(name: 'Test Matura')
-  #   group = exam.groups.create(name: 'a1', kind: 'rozszerzona')
-  #   student1 = group.students.create(name: 'student 1')
-  #   student2 = group.students.create(name: 'student 2')
-  #
-  #   task = exam.tasks.create(number: 1, level: 'podstawa')
-  #   subtask1 = task.subtasks.create(name: '1', max_points: 1)
-  #   subtask2 = task.subtasks.create(name: '2', max_points: 1)
-  #
-  #   student = create :student
-  #
-  #   service = TaskScoresHandler.new(exam, task)
-  #   service.add_task_to_all_students
-  #
-  #   expect(student1.reload.scores.count).to eq(2)
-  #   expect(student2.reload.scores.count).to eq(2)
-  # end
+  let!(:exam) { create :exam }
+  let!(:group) { create :group, exam: exam }
+  let!(:student1) { create :student, group: group }
+  let!(:student2) { create :student, group: group }
+
+  it 'adds newly created task to all existing students' do
+    task = create :task, exam: exam
+    subtask1 = create :subtask, task: task
+    subtask2 = create :subtask, task: task
+
+    service = TaskScoresHandler.new(exam, task)
+    service.add_task_to_all_students
+
+    expect(student1.reload.scores.count).to eq(2)
+    expect(student2.reload.scores.count).to eq(2)
+  end
 end
