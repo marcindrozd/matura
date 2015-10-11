@@ -9,4 +9,8 @@ class Exam::GroupsController < Exam::BaseController
 
   def update
   end
+
+  def show
+    @tasks = @group.tasks
+  end
 end

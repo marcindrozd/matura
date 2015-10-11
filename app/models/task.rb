@@ -11,8 +11,6 @@ class Task < ActiveRecord::Base
 
   validates_uniqueness_of :number, scope: [:exam_id, :level]
 
-  default_scope { order(:number) }
-
   scope :standard, -> { where level: 'standard' }
   scope :extended, -> { where level: 'extended' }
   scope :bilingual, -> { where level: 'bilingual' }

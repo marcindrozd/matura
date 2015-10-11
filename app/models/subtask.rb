@@ -5,8 +5,6 @@ class Subtask < ActiveRecord::Base
 
   delegate :level, to: :task
 
-  default_scope { order(:number) }
-
   def to_s
     "#{task.number}-#{number}"
   end
