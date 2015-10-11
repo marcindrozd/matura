@@ -1,0 +1,57 @@
+%h2 Enter scores
+
+%ul.accordion-tabs-minimal
+  %li.tab-header-and-content
+    %a.tab-link.is-active{:href => "#"} Podstawa
+    .tab-content
+      %table
+        %tr
+          %th= tc(Student)
+
+          - @group.students.first.scores.standard.each do |score|
+            %th= score.subtask
+
+
+        = simple_form_for [:exam, @group] do |f|
+          - @group.students.each do |student|
+            = f.simple_fields_for "student[]", student do |s_f|
+              %tr
+                %td= student.name
+                - student.scores.standard.each do |score|
+                  = s_f.simple_fields_for "score[]", score do |s_s_f|
+                    %td= s_s_f.input :score
+
+          = f.submit
+
+
+  %li.tab-header-and-content
+    %a.tab-link{:href => "#"} Rozszerzenie
+    .tab-content
+      %table
+        %tr
+          %th= tc(Student)
+
+          - @group.students.first.scores.extended.each do |score|
+            %th= score.subtask
+
+        - @group.students.each do |student|
+          %tr
+            %td= student.name
+            - student.scores.extended.each do |score|
+              %td= score.score
+
+  %li.tab-header-and-content
+    %a.tab-link{:href => "#"} Dwujęzyczne
+    .tab-content
+      %table
+        %tr
+          %th= tc(Student)
+
+          - @group.students.first.scores.bilingual.each do |score|
+            %th= score.subtask
+
+        - @group.students.each do |student|
+          %tr
+            %td= student.name
+            - student.scores.bilingual.each do |score|
+              %td= score.score

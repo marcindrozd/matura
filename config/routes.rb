@@ -12,6 +12,13 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :exam do
+    resources :groups
+  end
+
+  namespace :reports do
+  end
+
   resources :exams, only: [] do
     put :set_current, on: :member
   end

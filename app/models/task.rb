@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
 
-  LEVELS = %w{podstawa rozszerzenie dwujęzyczne}
+  LEVELS = %w{standard extended bilingual}
   SKILLS = %w{listening reading grammar writing}
 
   belongs_to :exam
@@ -13,9 +13,9 @@ class Task < ActiveRecord::Base
 
   default_scope { order(:number) }
 
-  scope :standard, -> { where level: 'podstawa' }
-  scope :extended, -> { where level: 'rozszerzenie' }
-  scope :bilingual, -> { where level: 'dwujęzyczne' }
+  scope :standard, -> { where level: 'standard' }
+  scope :extended, -> { where level: 'extended' }
+  scope :bilingual, -> { where level: 'bilingual' }
 
   def subtasks_list
     subtasks.map { |s| s.number }.compact.join(', ')
