@@ -32,3 +32,10 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
 end
+
+group :development do
+  gem 'rubocop', require: false
+  gem 'haml-lint', require: false
+end
+
+gem 'simplecov', :require => false, :group => :test
