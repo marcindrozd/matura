@@ -1,0 +1,28 @@
+@for $i from 1 to 11
+  .col-#{$i}
+    +span-columns($i)
+
+  .shift-#{$i}
+    +shift($i)
+
+.col-12
+  +fill-parent()
+
+.col-last
+  +omega()
+
+.row
+  +row()
+
+.pull-left
+  float: left
+
+.pull-right
+  float: right
+
+// custom
+.col-8-of-9
+  +span-columns(8 of 9)
+
+.col-1-of-9
+  +span-columns(1 of 9)
