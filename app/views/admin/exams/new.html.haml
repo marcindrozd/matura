@@ -1,6 +1,7 @@
-%h1= t('.title')
+.page-heading
+  %h1= t('.title')
 
-.actions
-  = link_to t('back'), admin_exams_path
+  .actions
+    = link_to t('back'), admin_exams_path, class: 'btn btn-info'
 
 = render 'form'

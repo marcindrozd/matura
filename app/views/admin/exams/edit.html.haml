@@ -1,7 +1,8 @@
-%h1= t('.title')
+.page-heading
+  %h1= t('.title')
 
-.actions
-  = link_to t('destroy'), admin_exam_path(@exam), method: :destroy, data: { confirm: t('confirm_delete') }
-  = link_to t('back'), admin_exams_path
+  .actions
+    = link_to t('destroy'), admin_exam_path(@exam), method: :destroy, data: { confirm: t('confirm_delete') }
+    = link_to t('back'), admin_exams_path
 
 = render 'form'
