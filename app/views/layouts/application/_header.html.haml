@@ -1,13 +1,15 @@
 %header.navigation{:role => "banner"}
   .navigation-wrapper
-    %a.logo{:href => "javascript:void(0)"}
-      %img{:alt => "Logo Image", :src => "https://raw.githubusercontent.com/thoughtbot/refills/master/source/images/placeholder_logo_1.png"}
-
+    %nav{ role: 'navigation' }
       %ul
         - if signed_in?
-          %li
-            = fa_link current_exam, '#', 'caret-down'
-            %ul
-              - available_exams.reject{ |exam| exam == current_exam }.each do |exam|
-                %li= link_to exam, set_current_exam_path(exam), method: :put
+          - if available_exams.many?
+            %li
+              = fa_link current_exam, '#', 'caret-down'
+              %ul
+                - available_exams.reject{ |exam| exam == current_exam }.each do |exam|
+                  %li= link_to exam, set_current_exam_path(exam), method: :put
+          - else
+            %li= current_exam
+
           %li= fa_link "#{t('sign_out')} #{current_user.first_name}", destroy_user_session_path, 'power-off', method: :delete
