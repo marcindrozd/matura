@@ -13,4 +13,9 @@
         %td= student.name
 
 = link_to t('.add_student'), admin_group_students_path(@group), method: :post
-= link_to t('.amend_students_number'), admin_group_students_path(@group), method: :put
+= link_to_modal t('.amend_students_number'), '#amend-students-number', class: 'btn btn-blue'
+
+%div{ id: 'amend-students-number', class: 'students-number-modal' }
+  = text_field_tag :students_number
+  = link_to t('confirm'), admin_group_students_path(@group), method: :put
+  = link_to t('cancel'), '#close-modal', rel: 'modal:close', class: 'btn btn-blue'
