@@ -1,40 +1,93 @@
-#{$all-buttons}
-  appearance: none
-  background-color: $action-color
-  border: 0
-  border-radius: none
-  color: #fff
-  cursor: pointer
-  display: inline-block
-  font-family: $base-font-family
-  font-size: $base-font-size
-  -webkit-font-smoothing: antialiased
-  font-weight: 600
-  line-height: 1
-  padding: $small-spacing $base-spacing
-  text-decoration: none
-  transition: background-color $base-duration $base-timing
-  user-select: none
-  vertical-align: middle
-  white-space: nowrap
-
-  &:hover,
-  &:focus
-    background-color: shade($action-color, 20%)
-    color: #fff
-
-  &:disabled
-    cursor: not-allowed
-    opacity: 0.5
-
-    &:hover
-      background-color: $action-color
-
-
 .btn
-  display: block
+  +box-sizing(border-box)
+  display: inline-block
+  width: auto
   padding: 0 $small-spacing
-  color: white
+  border: 0
+  border-radius: $base-radius
+  font-size: 14px
+  line-height: 16px + $small-spacing * 2.5
+  transition: background-color $base-duration $base-timing
+  text-transform: uppercase
+  text-decoration: none
+
+  &:hover, &:active, &:focus
+    text-decoration: none
+    background-color: shade($gray-5, 20%)
+    outline: 0
+
+  +btn-color($gray-5)
+
+  // Colors
+  &.btn-turquoise
+    +btn-color($turquoise)
+
+  &.btn-green-sea
+    +btn-color($green-sea)
+
+  &.btn-emerald
+    +btn-color($emerald)
+
+  &.btn-nephritis
+    +btn-color($nephritis)
+
+  &.btn-peter-river
+    +btn-color($peter-river)
+
+  &.btn-belize-hole
+    +btn-color($belize-hole)
+
+  &.btn-amethyst
+    +btn-color($amethyst)
+
+  &.btn-wisteria
+    +btn-color($wisteria)
+
+  &.btn-wet-asphalt
+    +btn-color($wet-asphalt)
+
+  &.btn-midnight-blue
+    +btn-color($midnight-blue)
+
+  &.btn-sun-flower
+    +btn-color($sun-flower)
+
+  &.btn-orange
+    +btn-color($orange)
+
+  &.btn-carrot
+    +btn-color($carrot)
+
+  &.btn-pumpkin
+    +btn-color($pumpkin)
+
+  &.btn-alizarin
+    +btn-color($alizarin)
+
+  &.btn-pomegranate
+    +btn-color($pomegranate)
+
+  &.btn-warning
+    +btn-color($warning)
+
+  &.btn-success
+    +btn-color($success)
+
+  &.btn-danger
+    +btn-color($danger)
 
   &.btn-info
-    background: blue
+    +btn-color($info)
+
+  &.btn-transparent
+    background-color: transparent
+
+  &.btn-animate
+    // transition: transform 0.1s ease-in-out
+    &:hover
+      transform: scaleY(-1)
+
+  // Layouts
+  &.btn-block
+    display: block
+    width: 100%
