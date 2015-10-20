@@ -1,8 +1,9 @@
 .page-heading
+  .heading-accent
   %h1= t('.title')
 
   .actions
-    = link_to t('.new_exam'), new_admin_exam_path
+    = link_to t('.new_exam'), new_admin_exam_path, class: 'btn btn-info'
 
 %table
   %tr

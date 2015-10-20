@@ -3,10 +3,17 @@ $page-heading-background: #ddd
 
 .page-heading
   margin: 20px 0
-  background: $page-heading-background
   font-size: 22px
   height: $page-heading-height
   line-height: $page-heading-height
+
+  .heading-accent
+    height: $page-heading-height
+    width: $page-heading-height
+    float: left
+    display: inline-block
+    margin-right: $small-spacing / 2
+    background: $alizarin
 
   h1
     float: left
@@ -16,3 +23,6 @@ $page-heading-background: #ddd
 
   .actions
     float: right
+
+    .btn
+      line-height: $page-heading-height
