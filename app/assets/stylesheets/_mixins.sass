@@ -1,0 +1,8 @@
+=btn-color($color, $text-color: $white)
+  background-color: $color
+  transition: background-color $base-duration $base-timing
+  color: $text-color
+
+  &:hover, &:active, &:focus
+    color: $text-color
+    background-color: shade($color, 10%)
