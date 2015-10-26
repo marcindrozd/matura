@@ -32,8 +32,23 @@ SimpleNavigation::Configuration.run do |navigation|
       highlights_on: %r{^/admin/exams}
   end
 
+  teachers_navigation = lambda do |nav|
+    nav.item :scores, label(:scores, :users), exam_groups_path,
+      highlights_on: %r{^/exam/groups}
+  end
+
+  reports_navigation = lambda do |nav|
+    nav.item :reports, label(:reports, :users), '#'
+  end
+
+  main_navigation = lambda do |nav|
+    nav.item :teachers, label(:teachers, :users), '#', &teachers_navigation
+    nav.item :reports, label(:reports, :users), '#', &reports_navigation
+    nav.item :admin, label(:admin, :users), '#', &admin_navigation
+  end
+
   if signed_in?
-    navigation.items(&admin_navigation)
+    navigation.items(&main_navigation)
   else
     navigation.items(&guest_navigation)
   end
