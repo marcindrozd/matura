@@ -3,6 +3,8 @@ class Subtask < ActiveRecord::Base
   has_many :scores
   has_many :students, through: :scores
 
+  accepts_nested_attributes_for :scores
+
   delegate :level, to: :task
 
   def to_s

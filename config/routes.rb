@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   namespace :exam do
     resources :groups
+    resources :students do
+      resources :tasks
+    end
   end
 
   namespace :reports do

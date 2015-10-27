@@ -5,6 +5,7 @@ class Task < ActiveRecord::Base
 
   belongs_to :exam
   has_many :subtasks, dependent: :destroy
+  has_many :scores, through: :subtasks
   has_many :students, through: :subtasks
 
   accepts_nested_attributes_for :subtasks
@@ -17,5 +18,9 @@ class Task < ActiveRecord::Base
 
   def subtasks_list
     subtasks.map { |s| s.number }.compact.join(', ')
+  end
+
+  def full_score(student)
+    scores.where(student: student).sum(:score)
   end
 end

@@ -1,0 +1,6 @@
+%h2= @student
+
+= simple_form_for [:exam, @student, @task] do |f|
+  - @scores.each do |score|
+    = f.simple_fields_for :scores, score do |s_f|
+      = s_f.input :score

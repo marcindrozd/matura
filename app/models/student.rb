@@ -9,4 +9,8 @@ class Student < ActiveRecord::Base
   def sum_scores_by_task(task_id)
     scores.standard.where('tasks.id = ?', task_id).sum(:score)
   end
+
+  def standard_tasks
+    tasks.standard.order(:number).uniq
+  end
 end
