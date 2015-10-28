@@ -1,5 +1,7 @@
-= simple_form_for [:admin, @group] do |f|
-  = f.input :name
-  = f.input :kind, collection: Group::KINDS
+.row
+  .col-6
+    = simple_form_for [:admin, @group] do |f|
+      = f.input :name
+      = f.input :kind, collection: Group::KINDS
 
-  = f.button :submit
+      = f.submit t('save'), class: 'btn btn-info'

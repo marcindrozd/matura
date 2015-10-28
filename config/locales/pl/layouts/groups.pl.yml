@@ -1,0 +1,13 @@
+pl:
+  admin:
+    groups:
+      index:
+        title: Grupy
+        new_group: Nowa grupa
+        number_of_students: Liczba uczniów
+        view_students: Uczniowie
+      edit:
+        number_of_students: Liczba uczniów
+        add_students: Dodaj uczniów
+      new:
+        title: Nowa grupa

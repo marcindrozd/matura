@@ -9,3 +9,6 @@ pl:
         role: Rola
         password: Hasło
         password_confirmation: Potwierdzenie hasła
+      group:
+        name: Nazwa
+        kind: Rodzaj
