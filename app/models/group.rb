@@ -11,4 +11,8 @@ class Group < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: { scope: :exam }
   validates :kind, presence: true, inclusion: { in: KINDS }
+
+  def students_number
+    students.count
+  end
 end

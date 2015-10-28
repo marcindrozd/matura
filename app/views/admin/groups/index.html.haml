@@ -8,6 +8,7 @@
     %th= t('number')
     %th= ta(Group, :name)
     %th= ta(Group, :kind)
+    %th= t('.number_of_students')
     %th= t('actions')
 
   - @groups.each_with_index do |group, idx|
@@ -15,4 +16,8 @@
       %td= idx + 1
       %td= group.name
       %td= group.kind
-      %td= link_to t('edit'), edit_admin_group_path(group)
+      %td= group.students_number
+      %td
+        = link_to t('edit'), edit_admin_group_path(group)
+        = link_to t('view_students'), admin_group_students_path(group)
+        = link_to t('destroy'), admin_group_path(group), method: :delete, data: { confirm: t('confirm') }
