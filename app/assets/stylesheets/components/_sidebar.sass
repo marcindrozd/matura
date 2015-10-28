@@ -1,11 +1,11 @@
 .cbp-spmenu
-  background: #47a3da
+  background: $c-blue-1
   position: fixed
 
   .toggler
     position: fixed
     padding: 56px 12px
-    background: #47a3da
+    background: $c-blue-2
     margin-left: 240px
     height: 100%
     top: 0
@@ -26,18 +26,18 @@
 
   a
     display: block
-    color: #fff
+    color: black
     padding: $small-spacing * 0.8
     text-decoration: none
     font-size: 1.1em
     font-weight: 300
 
     &:hover
-      background: #258ecd
+      background: $c-blue-2
 
     &:active
-      background: #afdefa
-      color: #47a3da
+      background: $c-blue-2
+      color: black
 
     ul
     margin: 0
@@ -48,12 +48,12 @@
 
   li.selected
     > a
-      background-color: red
+      background-color: $c-blue-2
 
   li.active
     > a
       position: relative
-      background-color: red
+      background-color: $c-blue-2
 
   ul ul
     a
@@ -67,7 +67,7 @@
   z-index: 1000
 
   a
-    border-bottom: 1px solid #258ecd
+    // border-bottom: 1px solid #258ecd
     padding: 1em
 
 .cbp-spmenu-left
