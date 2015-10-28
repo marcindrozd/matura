@@ -42,7 +42,7 @@ SimpleNavigation::Configuration.run do |navigation|
   end
 
   main_navigation = lambda do |nav|
-    nav.item :teachers, label(:teachers, :'pencil-square-o'), '#', &teachers_navigation
+    nav.item :teacher, label(:teacher, :'pencil-square-o'), '#', &teachers_navigation
     nav.item :reports, label(:reports, :'bar-chart'), '#', &reports_navigation
     nav.item :admin, label(:admin, :lock), '#', &admin_navigation
   end

@@ -1,0 +1,12 @@
+pl:
+  layouts:
+    application:
+      sidebar:
+        teacher: Nauczyciel
+        scores: Wpisz wyniki
+        reports: Raporty
+        admin: Administrator
+        users: Użytkownicy
+        groups: Grupy
+        tasks: Zadania
+        exams: Egzaminy
