@@ -27,6 +27,8 @@
   a
     display: block
     color: #fff
+    padding: $small-spacing * 0.8
+    text-decoration: none
     font-size: 1.1em
     font-weight: 300
 
@@ -36,6 +38,27 @@
     &:active
       background: #afdefa
       color: #47a3da
+
+    ul
+    margin: 0
+    // margin-top: $small-spacing
+    padding: 0
+    font-size: 16px
+    list-style-type: none
+
+  li.selected
+    > a
+      background-color: red
+
+  li.active
+    > a
+      position: relative
+      background-color: red
+
+  ul ul
+    a
+      padding-left: $base-spacing * 1.5
+      font-size: 0.9em
 
 .cbp-spmenu-vertical
   width: 240px

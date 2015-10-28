@@ -22,29 +22,29 @@ SimpleNavigation::Configuration.run do |navigation|
   end
 
   admin_navigation = lambda do |nav|
-    nav.item :users, label(:users, :users), admin_users_path,
+    nav.item :users, label(:users, :user), admin_users_path,
       highlights_on: %r{^/admin/users}
     nav.item :groups, label(:groups, :users), admin_groups_path,
       highlights_on: %r{^/admin/groups}
-    nav.item :tasks, label(:tasks, :users), admin_tasks_path,
+    nav.item :tasks, label(:tasks, :book), admin_tasks_path,
       highlights_on: %r{^/admin/tasks}
-    nav.item :groups, label(:exams, :'shopping-cart'), admin_exams_path,
+    nav.item :exams, label(:exams, :'graduation-cap'), admin_exams_path,
       highlights_on: %r{^/admin/exams}
   end
 
   teachers_navigation = lambda do |nav|
-    nav.item :scores, label(:scores, :users), exam_groups_path,
+    nav.item :scores, label(:scores, :pencil), exam_groups_path,
       highlights_on: %r{^/exam/groups}
   end
 
   reports_navigation = lambda do |nav|
-    nav.item :reports, label(:reports, :users), '#'
+    nav.item :reports, label(:reports, :'bar-chart'), '#'
   end
 
   main_navigation = lambda do |nav|
-    nav.item :teachers, label(:teachers, :users), '#', &teachers_navigation
-    nav.item :reports, label(:reports, :users), '#', &reports_navigation
-    nav.item :admin, label(:admin, :users), '#', &admin_navigation
+    nav.item :teachers, label(:teachers, :'pencil-square-o'), '#', &teachers_navigation
+    nav.item :reports, label(:reports, :'bar-chart'), '#', &reports_navigation
+    nav.item :admin, label(:admin, :lock), '#', &admin_navigation
   end
 
   if signed_in?
