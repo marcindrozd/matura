@@ -1,4 +1,8 @@
-.page-header
+.page-heading
+  .heading-accent
   %h1= t('.new_user')
+
+  .actions
+    = link_to t('back'), admin_users_path, class: 'btn btn-info'
 
 = render 'form'

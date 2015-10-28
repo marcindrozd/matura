@@ -2,5 +2,8 @@ pl:
   number: L.p.
   actions: Akcje
 
+  back: Powrót
   edit: Edytuj
+  save: Zapisz
+  delete: Usuń
   confirm: 'Czy na pewno?'

@@ -3,3 +3,5 @@ pl:
     users:
       index:
         new_user: Dodaj użytkownika
+      new:
+        new_user: Nowy użytkownik

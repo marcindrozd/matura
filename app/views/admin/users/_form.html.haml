@@ -1,10 +1,16 @@
 = simple_form_for [:admin, @user] do |f|
-  = f.input :username
-  = f.input :email
-  = f.input :password
-  = f.input :password_confirmation
-  = f.input :first_name
-  = f.input :last_name
-  = f.input :role, collection: User::ROLES
+  .row
+    .col-6
+      = f.input :username
+      = f.input :email
+      = f.input :password
+      = f.input :password_confirmation
 
-  = f.button :submit
+    .col-6.col-last
+      = f.input :first_name
+      = f.input :last_name
+      = f.input :role, collection: User::ROLES
+
+  .row
+    .col-12
+      = f.submit t('save'), class: 'btn btn-info'

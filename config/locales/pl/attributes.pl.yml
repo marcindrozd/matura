@@ -7,3 +7,5 @@ pl:
         last_name: Nazwisko
         email: Email
         role: Rola
+        password: Hasło
+        password_confirmation: Potwierdzenie hasła
