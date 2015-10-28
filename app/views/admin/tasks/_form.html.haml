@@ -1,13 +1,18 @@
 = simple_form_for [:admin, @task] do |f|
-  = f.input :number
-  = f.input :level, collection: Task::LEVELS
-  = f.input :skill, collection: Task::SKILLS
+  .row
+    .col-6
+      = t('.general')
+      = f.input :number
+      = f.input :level, collection: Task::LEVELS
+      = f.input :skill, collection: Task::SKILLS
 
-  #subtasks
-  = f.simple_fields_for :subtasks do |subtask|
-    = render 'subtask_fields', f: subtask
+      = f.submit t('save'), class: 'btn btn-info'
 
-  .links
-    = link_to_add_association 'add subtask', f, :subtasks
+    .col-6.col-last
+      #subtasks
+        = t('.subtask_fields')
+        = f.simple_fields_for :subtasks do |subtask|
+          = render 'subtask_fields', f: subtask
 
-  = f.button :submit
+        .links
+          = link_to_add_association t('.add_subtask'), f, :subtasks, class: 'btn btn-info'

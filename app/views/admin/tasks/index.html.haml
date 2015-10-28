@@ -1,21 +1,24 @@
-.page-header
+.page-heading
+  .heading-accent
   %h1= tc_few(Task)
 
-.users-list
-  %table
-    %tr
-      %th= t('number')
-      %th= ta(Task, :number)
-      %th= tc_few(Subtask)
-      %th= ta(Task, :skill)
-      %th= ta(Task, :level)
-      %th= t('actions')
+  .actions
+    = link_to t('.add_task'), new_admin_task_path, class: 'btn btn-info'
 
-    - @tasks.each_with_index do |task, idx|
-      %tr
-        %td= idx + 1
-        %td= task.number
-        %td= task.subtasks_list
-        %td= task.skill
-        %td= task.level
-        %td= link_to t('edit'), edit_admin_task_path(task)
+%table
+  %tr
+    %th= t('number')
+    %th= ta(Task, :number)
+    %th= tc_few(Subtask)
+    %th= ta(Task, :skill)
+    %th= ta(Task, :level)
+    %th= t('actions')
+
+  - @tasks.each_with_index do |task, idx|
+    %tr
+      %td= idx + 1
+      %td= task.number
+      %td= task.subtasks_list
+      %td= task.skill
+      %td= task.level
+      %td= link_to t('edit'), edit_admin_task_path(task), class: 'btn btn-info'

@@ -1,0 +1,13 @@
+pl:
+  admin:
+    tasks:
+      new:
+        title: Nowe zadanie
+      index:
+        add_task: Dodaj zadanie
+      form:
+        general: Ogólne
+        subtask_fields: Podzadania
+        add_subtask: Nowe podzadanie
+      subtask_fields:
+        remove_subtask: Usuń

@@ -1,4 +1,8 @@
-.nested-fields
-  = f.input :number
-  = f.input :max_points
-  = link_to_remove_association 'remove subtask', f
+.row
+  .nested-fields
+    .col-4
+      = f.input :number
+    .col-4
+      = f.input :max_points
+    .col-4.col-last
+      = link_to_remove_association t('.remove_subtask'), f, class: 'btn btn-info'

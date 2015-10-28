@@ -6,3 +6,13 @@ pl:
         few: Użytkownicy
         many: Użytkowników
         other: Użytkownicy
+      subtask:
+        one: Podzadanie
+        few: Podzadania
+        many: Podzadań
+        other: Podzadania
+      task:
+        one: Zadanie
+        few: Zadania
+        many: Zadań
+        other: Zadania

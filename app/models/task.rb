@@ -23,4 +23,8 @@ class Task < ActiveRecord::Base
   def full_score(student)
     scores.where(student: student).sum(:score)
   end
+
+  def full_number
+    "#{number} - #{level}"
+  end
 end

@@ -12,3 +12,10 @@ pl:
       group:
         name: Nazwa
         kind: Rodzaj
+      task:
+        number: Numer
+        skill: Umiejętność
+        level: Poziom
+      subtask:
+        number: Numer
+        max_points: 'Max. punktów'
