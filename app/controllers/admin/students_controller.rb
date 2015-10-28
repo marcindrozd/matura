@@ -6,9 +6,9 @@ class Admin::StudentsController < Admin::BaseController
   end
 
   def create
-    @student.name = generate_name
+    success, @student = student_service.create
 
-    if @student.save
+    if success
       redirect_to admin_group_students_path(@group)
     else
       render :index
@@ -20,8 +20,7 @@ class Admin::StudentsController < Admin::BaseController
 
   private
 
-  def generate_name
-    next_student = @group.students.count || 0
-    "Uczeń #{next_student + 1}"
+  def student_service
+    @student_service ||= StudentService.new @student
   end
 end

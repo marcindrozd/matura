@@ -13,4 +13,8 @@ class Student < ActiveRecord::Base
   def standard_tasks
     tasks.standard.order(:number).uniq
   end
+
+  def exam
+    group.exam
+  end
 end
