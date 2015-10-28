@@ -1,0 +1,7 @@
+pl:
+  admin:
+    exams:
+      index:
+        new_exam: Nowy egzamin
+      new:
+        title: Nowy egzamin

@@ -1,6 +1,6 @@
 .page-heading
   .heading-accent
-  %h1= t('.title')
+  %h1= tc_few(Exam)
 
   .actions
     = link_to t('.new_exam'), new_admin_exam_path, class: 'btn btn-info'
@@ -15,4 +15,4 @@
     %tr
       %td= idx + 1
       %td= exam.name
-      %td= link_to t('edit'), edit_admin_exam_path(exam)
+      %td= link_to t('edit'), edit_admin_exam_path(exam), class: 'btn btn-info'

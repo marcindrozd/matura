@@ -1,8 +1,9 @@
 .page-heading
-  %h1= t('.title')
+  .heading-accent
+  %h1= @exam.name
 
   .actions
-    = link_to t('destroy'), admin_exam_path(@exam), method: :destroy, data: { confirm: t('confirm_delete') }
-    = link_to t('back'), admin_exams_path
+    = link_to t('back'), admin_exams_path, class: 'btn btn-info'
+    = link_to t('delete'), admin_exam_path(@exam), class: 'btn btn-danger', method: :destroy, data: { confirm: t('confirm') }
 
 = render 'form'

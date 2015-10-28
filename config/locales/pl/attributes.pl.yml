@@ -1,6 +1,8 @@
 pl:
   activerecord:
     attributes:
+      exam:
+        name: Nazwa
       user:
         username: Login
         first_name: Imię

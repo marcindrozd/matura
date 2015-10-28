@@ -16,3 +16,8 @@ pl:
         few: Zadania
         many: Zadań
         other: Zadania
+      exam:
+        one: Egzamin
+        few: Egzaminy
+        many: Egzaminów
+        other: Egzaminy
