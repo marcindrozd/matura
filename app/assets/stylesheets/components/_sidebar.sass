@@ -1,11 +1,12 @@
 .cbp-spmenu
-  background: $c-blue-1
+  background: $main-1
   position: fixed
 
   .toggler
+    color: $gray-1
     position: fixed
     padding: 56px 12px
-    background: $c-blue-2
+    background: $main-2
     margin-left: 240px
     height: 100%
     top: 0
@@ -26,17 +27,18 @@
 
   a
     display: block
-    color: black
+    color: $main-2
     padding: $small-spacing * 0.8
     text-decoration: none
     font-size: 1.1em
     font-weight: 300
 
     &:hover
-      background: $c-blue-2
+      color: $main-1
+      background: $main-2
 
     &:active
-      background: $c-blue-2
+      background: $main-2
       color: black
 
     ul
@@ -48,12 +50,14 @@
 
   li.selected
     > a
-      background-color: $c-blue-2
+      color: $main-1
+      background-color: $main-2
 
   li.active
     > a
       position: relative
-      background-color: $c-blue-2
+      color: $main-1
+      background-color: $main-2
 
   ul ul
     a
