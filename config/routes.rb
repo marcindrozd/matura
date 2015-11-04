@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :tasks
     resources :groups do
       resources :students, only: [:index, :create] do
-        put :update, on: :collection
+        put :update_number, on: :collection
       end
     end
   end

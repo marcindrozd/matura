@@ -1,6 +1,6 @@
 class Student < ActiveRecord::Base
   belongs_to :group
-  has_many :scores
+  has_many :scores, dependent: :destroy
   has_many :subtasks, through: :scores
   has_many :tasks, through: :subtasks
 

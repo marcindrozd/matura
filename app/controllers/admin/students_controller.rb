@@ -15,6 +15,17 @@ class Admin::StudentsController < Admin::BaseController
     end
   end
 
+  def update_number
+    @student = @group.students.new
+    success, @group = student_service.update_number(@group, params[:students_count])
+
+    if success
+      redirect_to admin_group_students_path(@group)
+    else
+      render :index
+    end
+  end
+
   def update
   end
 
