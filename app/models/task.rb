@@ -27,4 +27,12 @@ class Task < ActiveRecord::Base
   def full_number
     "#{number} - #{level}"
   end
+
+  def pretty_level
+    I18n.t("task.levels.#{level}")
+  end
+
+  def self.levels_collection
+    LEVELS.map { |l| [I18n.t("task.levels.#{l}"), l] }
+  end
 end

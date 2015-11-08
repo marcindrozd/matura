@@ -11,3 +11,8 @@ pl:
         add_students: Dodaj uczniów
       new:
         title: Nowa grupa
+  exam:
+    groups:
+      index:
+        title: Grupy
+        enter_scores: Wpisz wyniki

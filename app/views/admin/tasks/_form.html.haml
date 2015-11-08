@@ -3,7 +3,7 @@
     .col-6
       = t('.general')
       = f.input :number
-      = f.input :level, collection: Task::LEVELS
+      = f.input :level, collection: Task.levels_collection
       = f.input :skill, collection: Task::SKILLS
 
       = f.submit t('save'), class: 'btn btn-info'
