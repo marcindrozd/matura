@@ -12,7 +12,7 @@ class StudentService < ApplicationService
     result = student.update_attributes(name: generate_name)
     add_all_tasks_to_student(student)
 
-    return result, student
+    return result
   end
 
   def get
@@ -35,13 +35,13 @@ class StudentService < ApplicationService
       end
     end
 
-    return true, group
+    return true
   end
 
   def update(params)
     result = student.update_attributes params
 
-    return result, student
+    return result
   end
 
   def destroy

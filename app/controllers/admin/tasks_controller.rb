@@ -8,7 +8,9 @@ class Admin::TasksController < Admin::BaseController
   end
 
   def create
-    if @task.save
+    success, @task = task_service.create
+
+    if success
       redirect_to edit_admin_task_path(@task)
     else
       render :new
@@ -19,7 +21,9 @@ class Admin::TasksController < Admin::BaseController
   end
 
   def update
-    if @task.update(task_params)
+    success, @task = task_service.update task_params
+
+    if success
       redirect_to edit_admin_task_path(@task)
     else
       render :edit
@@ -34,6 +38,10 @@ class Admin::TasksController < Admin::BaseController
   private
 
   def task_params
-    params.require(:task).permit(:number, :level, :skill, subtasks_attributes: [:id, :name, :max_points, :_destroy])
+    params.require(:task).permit(:number, :level, :skill, subtasks_attributes: [:id, :number, :max_points, :_destroy])
+  end
+
+  def task_service
+    @task_service ||= TaskService.new @task
   end
 end
