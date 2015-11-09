@@ -1,0 +1,7 @@
+pl:
+  admin:
+    students:
+      index:
+        add_student: Dodaj ucznia
+        amend_students_number: Zmień liczbę uczniów
+        enter_number: Podaj nową liczbę

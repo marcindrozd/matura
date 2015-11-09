@@ -49,12 +49,40 @@ header.navigation
       color: $navigation-color-hover
 
   nav
-    float: right
-
-    ul
+    .actions
+      +clearfix
+      float: right
       line-height: $navigation-height
-      color: $dark-gray
+      text-transform: uppercase
+      font-size: 13px
 
-    li
-      display: inline-block
-      padding-right: $base-font-size
+      &, ul
+        margin: 0
+        padding: 0
+        list-style-type: none
+
+      li
+        position: relative
+
+        > a
+          display: block
+          padding: 0 $small-spacing
+
+      > li
+        display: inline-block
+        float: left
+
+      ul
+        display: none
+        position: absolute
+        right: 0
+        min-width: 100%
+
+      li
+        &:hover
+          ul
+            display: block
+
+        ul li a
+          background-color: $main-1
+          white-space: nowrap

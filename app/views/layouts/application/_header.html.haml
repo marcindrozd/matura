@@ -1,7 +1,7 @@
 %header.navigation{:role => "banner"}
   .navigation-wrapper
     %nav{ role: 'navigation' }
-      %ul
+      %ul.actions
         - if signed_in?
           - if available_exams.many?
             %li
@@ -9,6 +9,7 @@
               %ul
                 - available_exams.reject{ |exam| exam == current_exam }.each do |exam|
                   %li= link_to exam, set_current_exam_path(exam), method: :put
+
           - else
             %li= current_exam
 
