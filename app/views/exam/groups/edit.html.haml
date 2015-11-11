@@ -4,9 +4,9 @@
   %li.tab-header-and-content
     %a.tab-link.is-active{:href => "#"} Podstawa
     .tab-content
-      %table
+      %table.fixed-table
         %tr
-          %th= tc(Student)
+          %th.wider-cell= tc(Student)
 
           - @group.students.first.standard_tasks.each do |task|
             %th= task.number
@@ -19,32 +19,32 @@
 
   %li.tab-header-and-content
     %a.tab-link{:href => "#"} Rozszerzenie
-    .tab-content
+    .tab-content.fixed-table
       %table
         %tr
-          %th= tc(Student)
+          %th.wider-cell= tc(Student)
 
-          - @group.students.first.scores.extended.each do |score|
-            %th= score.subtask
+          - @group.students.first.extended_tasks.each do |task|
+            %th= task.number
 
         - @group.students.each do |student|
           %tr
             %td= student.name
-            - student.scores.extended.each do |score|
-              %td= score.score
+            - student.extended_tasks.each do |task|
+              %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
 
   %li.tab-header-and-content
     %a.tab-link{:href => "#"} Dwujęzyczne
-    .tab-content
+    .tab-content.fixed-table
       %table
         %tr
-          %th= tc(Student)
+          %th.wider-cell= tc(Student)
 
-          - @group.students.first.scores.bilingual.each do |score|
-            %th= score.subtask
+          - @group.students.first.bilingual_tasks.each do |task|
+            %th= task.number
 
         - @group.students.each do |student|
           %tr
             %td= student.name
-            - student.scores.bilingual.each do |score|
-              %td= score.score
+            - student.bilingual_tasks.each do |task|
+              %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)

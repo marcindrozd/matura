@@ -27,6 +27,7 @@
   a.tab-link {
     background-color: $tab-inactive-color;
     border-top: $tab-border;
+    border-bottom: $tab-border;
     color: $tab-link-color;
     display: block;
     padding: ($base-spacing / 2) $gutter;

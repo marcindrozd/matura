@@ -14,6 +14,14 @@ class Student < ActiveRecord::Base
     tasks.standard.order(:number).uniq
   end
 
+  def extended_tasks
+    tasks.extended.order(:number).uniq
+  end
+
+  def bilingual_tasks
+    tasks.bilingual.order(:number).uniq
+  end
+
   def exam
     group.exam
   end
