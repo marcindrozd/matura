@@ -1,0 +1,9 @@
+pl:
+  admin:
+    exams:
+      create:
+        exam_created: Egzamin utworzony
+      update:
+        exam_updated: Egzamin zaktualizowany
+      destroy:
+        exam_destroyed: Egzamin usunięty

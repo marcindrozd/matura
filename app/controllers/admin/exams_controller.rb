@@ -9,7 +9,7 @@ class Admin::ExamsController < Admin::BaseController
 
   def create
     if @exam.save
-      redirect_to admin_exams_path
+      redirect_to admin_exams_path, notice: t('.exam_created')
     else
       render :new
     end
@@ -20,13 +20,15 @@ class Admin::ExamsController < Admin::BaseController
 
   def update
     if @exam.update(exam_params)
-      redirect_to edit_admin_exam_path(exam)
+      redirect_to edit_admin_exam_path(@exam), notice: t('.exam_updated')
     else
       render :edit
     end
   end
 
   def destroy
+    @exam.destroy
+    redirect_to admin_exams_path, notice: t('.exam_destroyed')
   end
 
   private
