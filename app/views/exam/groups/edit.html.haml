@@ -1,10 +1,18 @@
-%h2= @group.name
+.page-heading
+  .heading-accent
+  %h1= @group.name
+
+  .actions
 
 %ul.accordion-tabs-minimal
   %li.tab-header-and-content
     %a.tab-link.is-active{:href => "#"} Podstawa
     .tab-content
       %table.fixed-table
+        %tr
+          %th
+            - skills_heading(@group.students.first.standard_tasks)
+
         %tr
           %th.wider-cell= tc(Student)
 

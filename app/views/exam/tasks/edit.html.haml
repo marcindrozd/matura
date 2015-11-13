@@ -1,6 +1,15 @@
-%h2= @student
+.page-heading
+  .heading-accent
+  %h1= "#{tc(Task)}: #{@task.number} / #{@student.group.name} - #{@student.name}"
+
+  .actions
+    = link_to t('back'), edit_exam_group_path(@student.group), class: 'btn btn-info'
 
 = simple_form_for [:exam, @student, @task] do |f|
-  - @scores.each do |score|
-    = f.simple_fields_for :scores, score do |s_f|
-      = s_f.input :score
+  %table
+    %tr
+      - @scores.each do |score|
+        = f.simple_fields_for :scores, score do |s_f|
+          %td= s_f.input :score, label: score.subtask.number
+
+  = f.submit t('save'), class: 'btn btn-info'

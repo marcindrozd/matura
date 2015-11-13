@@ -9,6 +9,7 @@ class Task < ActiveRecord::Base
   has_many :students, through: :subtasks
 
   accepts_nested_attributes_for :subtasks, allow_destroy: true
+  accepts_nested_attributes_for :scores, allow_destroy: true
 
   validates_uniqueness_of :number, scope: [:exam_id, :level]
 
