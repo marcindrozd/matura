@@ -10,14 +10,14 @@
     .tab-content
       %table.fixed-table
         %tr
-          %th
+          %th.wider-cell
             - skills_heading(@group.students.first.standard_tasks)
 
         %tr
           %th.wider-cell= tc(Student)
 
           - @group.students.first.standard_tasks.each do |task|
-            %th= task.number
+            %th= task.extended_number
 
         - @group.students.each do |student|
           %tr
@@ -27,13 +27,17 @@
 
   %li.tab-header-and-content
     %a.tab-link{:href => "#"} Rozszerzenie
-    .tab-content.fixed-table
-      %table
+    .tab-content
+      %table.fixed-table
+        %tr
+          %th.wider-cell
+            - skills_heading(@group.students.first.extended_tasks)
+
         %tr
           %th.wider-cell= tc(Student)
 
           - @group.students.first.extended_tasks.each do |task|
-            %th= task.number
+            %th= task.extended_number
 
         - @group.students.each do |student|
           %tr
@@ -43,13 +47,17 @@
 
   %li.tab-header-and-content
     %a.tab-link{:href => "#"} Dwujęzyczne
-    .tab-content.fixed-table
-      %table
+    .tab-content
+      %table.fixed-table
+        %tr
+          %th.wider-cell
+            - skills_heading(@group.students.first.bilingual_tasks)
+
         %tr
           %th.wider-cell= tc(Student)
 
           - @group.students.first.bilingual_tasks.each do |task|
-            %th= task.number
+            %th= task.extended_number
 
         - @group.students.each do |student|
           %tr

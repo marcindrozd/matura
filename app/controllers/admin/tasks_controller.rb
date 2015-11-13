@@ -38,7 +38,7 @@ class Admin::TasksController < Admin::BaseController
   private
 
   def task_params
-    params.require(:task).permit(:number, :level, :skill, subtasks_attributes: [:id, :number, :max_points, :_destroy])
+    params.require(:task).permit(:number, :level, :skill, :secondary_number, :description, subtasks_attributes: [:id, :number, :max_points, :_destroy])
   end
 
   def task_service
