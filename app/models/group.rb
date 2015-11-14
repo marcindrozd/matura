@@ -15,4 +15,16 @@ class Group < ActiveRecord::Base
   def students_number
     students.count
   end
+
+  def standard_tasks
+    tasks.where(level: 'standard').order(:number, :secondary_number).uniq
+  end
+
+  def extended_tasks
+    tasks.where(level: 'extended').order(:number, :secondary_number).uniq
+  end
+
+  def bilingual_tasks
+    tasks.where(level: 'bilingual').order(:number, :secondary_number).uniq
+  end
 end
