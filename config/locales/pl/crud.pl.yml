@@ -7,3 +7,7 @@ pl:
         exam_updated: Egzamin zaktualizowany
       destroy:
         exam_destroyed: Egzamin usunięty
+  exam:
+    tasks:
+      update:
+        score_updated: Punktacja zaktualizowana

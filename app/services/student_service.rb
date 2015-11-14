@@ -19,18 +19,18 @@ class StudentService < ApplicationService
     student
   end
 
-  def update_number(group, count)
+  def update_number(group, count, level)
     count = count.to_i
 
-    if group.students.count > count
-      number_to_delete = group.students.count - count
-      group.students.last(number_to_delete + 1).each do |item|
+    if group.students.where(level: level).count > count
+      number_to_delete = group.students.where(level: level).count - count
+      group.students.where(level: level).last(number_to_delete + 1).each do |item|
         item.destroy
       end
-    elsif group.students.count < count
-      number_to_create = count - group.students.count
+    elsif group.students.where(level: level).count < count
+      number_to_create = count - group.students.where(level: level).count
       number_to_create.times do
-        new_student = group.students.create(name: generate_name)
+        new_student = group.students.create(name: generate_name(level), level: level)
         add_all_tasks_to_student(new_student)
       end
     end
@@ -51,15 +51,18 @@ class StudentService < ApplicationService
   private
 
   def add_all_tasks_to_student(student)
-    exam.subtasks.each do |subtask|
+    level = student.level
+    subtasks = exam.subtasks.select { |s| s.level == level }
+
+    subtasks.each do |subtask|
       student.scores << subtask.scores.create
     end
 
     student.save
   end
 
-  def generate_name
-    next_student = group.students.count || 0
+  def generate_name(level)
+    next_student = group.students.where(level: level).count || 0
     "Uczeń #{next_student + 1}"
   end
 end

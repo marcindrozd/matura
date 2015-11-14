@@ -38,7 +38,7 @@ SimpleNavigation::Configuration.run do |navigation|
   end
 
   reports_navigation = lambda do |nav|
-    nav.item :reports, label(:reports, :'bar-chart'), '#'
+    nav.item :groups, label(:groups, :'bar-chart'), reports_groups_path
   end
 
   main_navigation = lambda do |nav|

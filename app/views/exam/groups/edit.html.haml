@@ -11,15 +11,15 @@
       %table.fixed-table
         %tr
           %th.wider-cell
-            - skills_heading(@group.students.first.standard_tasks)
+            - skills_heading(@group.students.standard.first.standard_tasks)
 
         %tr
           %th.wider-cell= tc(Student)
 
-          - @group.students.first.standard_tasks.each do |task|
+          - @group.students.standard.first.standard_tasks.each do |task|
             %th= task.extended_number
 
-        - @group.students.each do |student|
+        - @group.students.standard.each do |student|
           %tr
             %td= student.name
             - student.standard_tasks.each do |task|
@@ -31,36 +31,36 @@
       %table.fixed-table
         %tr
           %th.wider-cell
-            - skills_heading(@group.students.first.extended_tasks)
+            - skills_heading(@group.students.extended.first.extended_tasks)
 
         %tr
           %th.wider-cell= tc(Student)
 
-          - @group.students.first.extended_tasks.each do |task|
+          - @group.students.extended.first.extended_tasks.each do |task|
             %th= task.extended_number
 
-        - @group.students.each do |student|
+        - @group.students.extended.each do |student|
           %tr
             %td= student.name
             - student.extended_tasks.each do |task|
               %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
 
-  %li.tab-header-and-content
-    %a.tab-link{:href => "#"} Dwujęzyczne
-    .tab-content
-      %table.fixed-table
-        %tr
-          %th.wider-cell
-            - skills_heading(@group.students.first.bilingual_tasks)
-
-        %tr
-          %th.wider-cell= tc(Student)
-
-          - @group.students.first.bilingual_tasks.each do |task|
-            %th= task.extended_number
-
-        - @group.students.each do |student|
-          %tr
-            %td= student.name
-            - student.bilingual_tasks.each do |task|
-              %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
+  -# %li.tab-header-and-content
+  -#   %a.tab-link{:href => "#"} Dwujęzyczne
+  -#   .tab-content
+  -#     %table.fixed-table
+  -#       %tr
+  -#         %th.wider-cell
+  -#           - skills_heading(@group.students.bilingual.first.bilingual_tasks)
+  -#
+  -#       %tr
+  -#         %th.wider-cell= tc(Student)
+  -#
+  -#         - @group.students.bilingual.first.bilingual_tasks.each do |task|
+  -#           %th= task.extended_number
+  -#
+  -#       - @group.students.bilingual.each do |student|
+  -#         %tr
+  -#           %td= student.name
+  -#           - student.bilingual_tasks.each do |task|
+  -#             %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)

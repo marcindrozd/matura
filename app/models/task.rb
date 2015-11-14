@@ -33,6 +33,13 @@ class Task < ActiveRecord::Base
     description ? "#{number} - #{description}" : number
   end
 
+  def max_points
+    subtasks.sum(:max_points)
+  end
+
+  def average_score(group)
+  end
+
   def pretty_level
     I18n.t("task.levels.#{level}")
   end

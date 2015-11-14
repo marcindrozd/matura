@@ -9,4 +9,8 @@ class Score < ActiveRecord::Base
   def task_number
     subtask.task.number
   end
+
+  def task
+    subtask.task
+  end
 end

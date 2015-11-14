@@ -1,10 +1,16 @@
 class Student < ActiveRecord::Base
+  LEVELS = %w{standard extended bilingual}.freeze
+
   belongs_to :group
   has_many :scores, dependent: :destroy
   has_many :subtasks, through: :scores
   has_many :tasks, through: :subtasks
 
   accepts_nested_attributes_for :scores
+
+  scope :standard, -> { where level: 'standard' }
+  scope :extended, -> { where level: 'extended' }
+  scope :bilingual, -> { where level: 'bilingual' }
 
   def sum_scores_by_task(task_id)
     scores.standard.where('tasks.id = ?', task_id).sum(:score)

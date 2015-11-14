@@ -17,7 +17,7 @@ class Admin::StudentsController < Admin::BaseController
 
   def update_number
     @student = @group.students.new
-    success = student_service.update_number(@group, params[:students_count])
+    success = student_service.update_number(@group, params[:students_count], params[:students_level])
 
     if success
       redirect_to admin_group_students_path(@group)

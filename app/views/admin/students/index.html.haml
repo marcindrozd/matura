@@ -3,20 +3,51 @@
   %h1= @group.name
 
   .actions
-    = link_to t('.add_student'), admin_group_students_path(@group), method: :post, class: 'btn btn-info'
     = link_to_modal t('.amend_students_number'), '#amend-students-number', class: 'btn btn-info'
 
 .col-12
   .users-list
-    %table
-      %tr
-        %th= t('number')
-        %th= ta(Student, :name)
+    .row
+      .col-4
+        = t('.standard_students')
+        %table
+          %tr
+            %th= t('number')
+            %th= ta(Student, :name)
 
-      - @students.each_with_index do |student, idx|
-        %tr
-          %td= idx + 1
-          %td= student.name
+          - @students.standard.each_with_index do |student, idx|
+            %tr
+              %td= idx + 1
+              %td= student.name
+        = link_to t('.add_student'), admin_group_students_path(@group), method: :post, class: 'btn btn-info'
+
+      .col-4
+        = t('.extended_students')
+        %table
+          %tr
+            %th= t('number')
+            %th= ta(Student, :name)
+
+          - @students.extended.each_with_index do |student, idx|
+            %tr
+              %td= idx + 1
+              %td= student.name
+        = link_to t('.add_student'), admin_group_students_path(@group), method: :post, class: 'btn btn-info'
+
+
+      .col-4.col-last
+        = t('.bilingual_students')
+        %table
+          %tr
+            %th= t('number')
+            %th= ta(Student, :name)
+
+          - @students.bilingual.each_with_index do |student, idx|
+            %tr
+              %td= idx + 1
+              %td= student.name
+        = link_to t('.add_student'), admin_group_students_path(@group), method: :post, class: 'btn btn-info'
+
 
 %div{ id: 'amend-students-number', class: 'students-number-modal' }
   = form_tag update_number_admin_group_students_path(@group), method: :put do
@@ -24,6 +55,9 @@
       = t('.enter_number')
     %p
       = text_field_tag :students_count
+    %p
+      = t('.select_level')
+      = select_tag :students_level, options_for_select(Student::LEVELS)
     %p
       = submit_tag t('save'), class: 'btn btn-info'
       = link_to t('cancel'), '#close-modal', rel: 'modal:close', class: 'btn btn-info'

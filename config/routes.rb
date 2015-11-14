@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   end
 
   namespace :reports do
+    resources :groups, only: [:index, :show]
   end
 
   resources :exams, only: [] do
