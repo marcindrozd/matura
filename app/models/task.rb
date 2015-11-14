@@ -37,7 +37,9 @@ class Task < ActiveRecord::Base
     subtasks.sum(:max_points)
   end
 
-  def average_score(group)
+  def average_score(group, level)
+    result = scores.where.not(score: nil).sum(:score) / group.students.where(level: level).count.to_f
+    result.round(2)
   end
 
   def pretty_level

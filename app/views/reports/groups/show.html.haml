@@ -11,27 +11,27 @@
       %table.fixed-table
         %tr
           %th.wider-cell
-            - skills_heading(@group.students.first.standard_tasks)
+            - skills_heading(@group.standard_tasks)
 
         %tr
           %th
 
-          - @group.students.first.standard_tasks.each do |task|
+          - @group.standard_tasks.each do |task|
             %th= task.extended_number
 
         %tr
           %th= t('.max_points')
 
-          - @group.students.first.standard_tasks.each do |task|
+          - @group.standard_tasks.each do |task|
             %th= task.max_points
 
         %tr
           %th= t('.average_score')
 
-          - @group.students.first.standard_tasks.each do |task|
-            %th= task.average_score(@group)
+          - @group.standard_tasks.each do |task|
+            %th= task.average_score(@group, 'standard')
 
-        - @group.students.each do |student|
+        - @group.students.standard.each do |student|
           %tr
             %td= student.name
             - student.standard_tasks.each do |task|

@@ -24,7 +24,9 @@ class TaskService < ApplicationService
   private
 
   def add_task_to_all_exam_students
-    exam.students.each do |student|
+    students = exam.students.where(level: task.level)
+
+    students.each do |student|
       task.subtasks.map do |subtask|
         student.scores << subtask.scores.build unless student.scores.pluck(:subtask_id).include?(subtask.id)
       end
