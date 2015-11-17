@@ -10,7 +10,7 @@
     %thead.filters-table
       %tr
         %th= t('number')
-        %th= ta(Task, :number)
+        %th= f.sort_link 'number', text: ta(Task, :number)
         %th= tc_few(Subtask)
         %th= f.filter :skill, :collection, collection: task_skills_for_select, text: ta(Task, :skill)
         %th= f.filter :level, :collection, collection: task_levels_for_select, text: ta(Task, :level)

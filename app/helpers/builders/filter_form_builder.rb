@@ -9,6 +9,10 @@ class Builders::FilterFormBuilder < Ransack::Helpers::FormBuilder
     ].join.html_safe
   end
 
+  def sort_link_only(method, options = {})
+    sort_link(options.delete(:sort) || method, options[:text] || @template.ta(method.to_sym))
+  end
+
   def filter_input(method, type, options = {})
     filter_method = {
       string: :string_filter,
