@@ -2,6 +2,7 @@ class Admin::TasksController < Admin::BaseController
   load_and_authorize_resource through: :current_exam
 
   def index
+    @tasks = apply_filters(@tasks, default_sorts: 'number asc')
   end
 
   def new

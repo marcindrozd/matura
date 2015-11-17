@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   ROLES = %w(admin teacher)
 
   has_and_belongs_to_many :groups
+  has_many :filters, class_name: UserFilter.name, inverse_of: :user, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true
   validates :username, presence: true, uniqueness: { case_sensitive: false }, format: { with: /\A[a-zA-Z0-9_\.]*\z/ }

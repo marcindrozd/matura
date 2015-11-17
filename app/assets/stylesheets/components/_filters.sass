@@ -1,0 +1,94 @@
+.filter-form
+  $controls-size: 30px
+
+  th
+    vertical-align: top
+
+    &.f-controls
+      vertical-align: top
+
+  .filter
+    position: relative
+    font-size: 16px
+
+    .clear-single-filter
+      position: absolute
+      right: $form-input-padding
+      top: $form-input-padding
+
+    .input-icon
+      position: absolute
+      font-size: 0.75em
+      right: $form-input-padding
+      top: $form-input-padding
+      line-height: 16px * $base-line-height
+
+    &.string-filter
+      input
+        padding-right: $base-spacing
+
+    &.collection-filter
+
+    &.multi-filter, &.multi-collection-filter
+      .clear-single-filter
+        top: auto
+        bottom: 0
+        right: 0
+        font-size: 0.8em
+
+    &.datetime-filter
+      font-size: 0.9em
+
+      input
+        float: left
+        width: 50%
+
+        &:not(:first-child)
+          border-left: 0
+
+  .controls
+    +clearfix
+    width: $controls-size
+    float: right
+    text-align: center
+
+    .submit-filter, .clear-filter
+      float: left
+      padding: 0
+      width: $controls-size
+      line-height: $controls-size
+      text-align: center
+
+  .multi-filter
+    position: relative
+
+  .multi-filter-control
+    font-weight: normal
+    font-size: 0.8em
+    color: #551a8b
+    cursor: pointer
+    &.changed
+      font-weight: bold
+
+  .multi-filter-box
+    width: 180px
+    position: absolute
+    z-index: 9999
+    top: 22px
+    left: 0
+
+    &.hidden
+      display: none
+
+.filters-table
+  
+  th
+    font-size: 0.8em
+
+    .filter
+      .fa
+        font-size: 14px
+        vertical-align: top
+
+  input, select
+    font-size: 0.675em
