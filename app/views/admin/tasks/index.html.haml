@@ -15,7 +15,6 @@
         %th= f.filter :skill, :collection, collection: task_skills_for_select, text: ta(Task, :skill)
         %th= f.filter :level, :collection, collection: task_levels_for_select, text: ta(Task, :level)
         %th= t('actions')
-        %th.wmin= f.controls
 
       - @tasks.each_with_index do |task, idx|
         %tr

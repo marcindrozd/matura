@@ -1,8 +1,31 @@
+=triangle-after($size, $color)
+  position: relative
+  &:after
+    content: ''
+    position: absolute
+    right: 0
+    top: 50%
+    margin-top: -($size / 2)
+    +triangle($size, $color, left)
+
+=triangle-under($size, $color)
+  position: relative
+  &:after
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 50%
+    margin-left: -($size / 2)
+    +triangle($size, $color, up)
+
 =btn-color($color, $text-color: $white)
   background-color: $color
-  transition: background-color $base-duration $base-timing
   color: $text-color
 
-  &:hover, &:active, &:focus
+  &:hover, &:active, &:focus, &.active
     color: $text-color
     background-color: shade($color, 10%)
+
+=page-header-color($color, $text-color: $white)
+  background-color: tint($color, 80%)
+  border-left: 5px solid $color

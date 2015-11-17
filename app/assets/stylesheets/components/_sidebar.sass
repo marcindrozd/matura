@@ -34,11 +34,9 @@
     font-weight: 300
 
     &:hover
-      color: $main-1
-      background: $main-2
+      color: $accent
 
     &:active
-      background: $main-2
       color: black
 
     ul
@@ -50,14 +48,18 @@
 
   li.selected
     > a
-      color: $main-1
-      background-color: $main-2
+      color: $accent
 
   li.active
     > a
+      +triangle-after(16px, $main-2)
       position: relative
-      color: $main-1
-      background-color: $main-2
+      color: $accent
+
+  ul > li > ul > li
+    &:hover
+      transition: margin-left 0.8s ease
+      margin-left: 20px
 
   ul ul
     a

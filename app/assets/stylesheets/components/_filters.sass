@@ -2,14 +2,13 @@
   $controls-size: 30px
 
   th
-    vertical-align: top
+    vertical-align: middle
 
     &.f-controls
-      vertical-align: top
+      vertical-align: middle
 
   .filter
     position: relative
-    font-size: 16px
 
     .clear-single-filter
       position: absolute
@@ -21,7 +20,6 @@
       font-size: 0.75em
       right: $form-input-padding
       top: $form-input-padding
-      line-height: 16px * $base-line-height
 
     &.string-filter
       input
@@ -83,12 +81,12 @@
 .filters-table
   
   th
-    font-size: 0.8em
-
     .filter
       .fa
         font-size: 14px
         vertical-align: top
 
-  input, select
-    font-size: 0.675em
+
+    select, input
+      display: inline
+      margin-bottom: 0
