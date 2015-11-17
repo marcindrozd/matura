@@ -3,5 +3,6 @@ pl:
     students:
       index:
         add_student: Dodaj ucznia
+        remove_student: Usuń ostatniego ucznia
         amend_students_number: Zmień liczbę uczniów
         enter_number: Podaj nową liczbę

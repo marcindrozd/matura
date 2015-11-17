@@ -7,6 +7,14 @@ pl:
         exam_updated: Egzamin zaktualizowany
       destroy:
         exam_destroyed: Egzamin usunięty
+    students:
+      create:
+        student_added: Dodano ucznia
+      update_number:
+        number_updated: Zaktualizowano liczbę uczniów
+      destroy:
+        student_deleted: Usunięto ucznia
+
   exam:
     tasks:
       update:

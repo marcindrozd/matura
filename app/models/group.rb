@@ -13,7 +13,7 @@ class Group < ActiveRecord::Base
   validates :kind, presence: true, inclusion: { in: KINDS }
 
   def students_number
-    students.count
+    students.standard.count
   end
 
   def standard_tasks

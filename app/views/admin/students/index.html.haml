@@ -19,7 +19,9 @@
             %tr
               %td= idx + 1
               %td= student.name
-        = link_to t('.add_student'), admin_group_students_path(@group), method: :post, class: 'btn btn-info'
+        = link_to t('.add_student'), admin_group_students_path(@group, level: 'standard'), method: :post, class: 'btn btn-info'
+        - if @group.students.standard.any?
+          = link_to t('.remove_student'), admin_group_student_path(@group, @group.students.standard.last), method: :delete, class: 'btn btn-danger'
 
       .col-4
         = t('.extended_students')
@@ -32,8 +34,9 @@
             %tr
               %td= idx + 1
               %td= student.name
-        = link_to t('.add_student'), admin_group_students_path(@group), method: :post, class: 'btn btn-info'
-
+        = link_to t('.add_student'), admin_group_students_path(@group, level: 'extended'), method: :post, class: 'btn btn-info'
+        - if @group.students.extended.any?
+          = link_to t('.remove_student'), admin_group_student_path(@group, @group.students.extended.last), method: :delete, class: 'btn btn-danger'
 
       .col-4.col-last
         = t('.bilingual_students')
@@ -46,8 +49,9 @@
             %tr
               %td= idx + 1
               %td= student.name
-        = link_to t('.add_student'), admin_group_students_path(@group), method: :post, class: 'btn btn-info'
-
+        = link_to t('.add_student'), admin_group_students_path(@group, level: 'bilingual'), method: :post, class: 'btn btn-info'
+        - if @group.students.bilingual.any?
+          = link_to t('.remove_student'), admin_group_student_path(@group, @group.students.bilingual.last), method: :delete, class: 'btn btn-danger'
 
 %div{ id: 'amend-students-number', class: 'students-number-modal' }
   = form_tag update_number_admin_group_students_path(@group), method: :put do

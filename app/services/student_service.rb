@@ -8,8 +8,8 @@ class StudentService < ApplicationService
     @exam = @group.exam
   end
 
-  def create
-    result = student.update_attributes(name: generate_name)
+  def create(level)
+    result = student.update_attributes(name: generate_name(level), level: level)
     add_all_tasks_to_student(student)
 
     return result
@@ -19,7 +19,7 @@ class StudentService < ApplicationService
     student
   end
 
-  def update_number(group, count, level)
+  def update_number(count, level)
     count = count.to_i
 
     if group.students.where(level: level).count > count

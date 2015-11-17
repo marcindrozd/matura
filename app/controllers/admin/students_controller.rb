@@ -6,10 +6,10 @@ class Admin::StudentsController < Admin::BaseController
   end
 
   def create
-    success = student_service.create
+    success = student_service.create params[:level]
 
     if success
-      redirect_to admin_group_students_path(@group)
+      redirect_to admin_group_students_path(@group), notice: t('.student_added')
     else
       render :index
     end
@@ -17,16 +17,21 @@ class Admin::StudentsController < Admin::BaseController
 
   def update_number
     @student = @group.students.new
-    success = student_service.update_number(@group, params[:students_count], params[:students_level])
+    success = student_service.update_number(params[:students_count], params[:students_level])
 
     if success
-      redirect_to admin_group_students_path(@group)
+      redirect_to admin_group_students_path(@group), notice: t('.number_updated')
     else
       render :index
     end
   end
 
   def update
+  end
+
+  def destroy
+    student_service.destroy
+    redirect_to admin_group_students_path(@group), notice: t('.student_deleted')
   end
 
   private
