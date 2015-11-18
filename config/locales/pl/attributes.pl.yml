@@ -16,6 +16,8 @@ pl:
         kind: Rodzaj
       task:
         number: Numer
+        secondary_number: Kolejność
+        description: Opis
         skill: Umiejętność
         level: Poziom
       subtask:
