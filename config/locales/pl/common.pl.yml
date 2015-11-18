@@ -5,6 +5,8 @@ pl:
   log_in: Logowanie
   remember_me: Zapamiętaj mnie
 
+  not_authorized: Nie masz uprawnień do przeglądania tej strony
+
   back: Powrót
   edit: Edytuj
   save: Zapisz
