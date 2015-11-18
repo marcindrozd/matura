@@ -10,6 +10,7 @@
       = f.input :first_name
       = f.input :last_name
       = f.input :role, collection: User::ROLES
+      = f.association :groups, collection: groups_for_select
 
   .row
     .col-12
