@@ -9,3 +9,4 @@ pl:
   cancel: Anuluj
   confirm: 'Czy na pewno?'
   sign_in: Zaloguj
+  sign_out: Wyloguj

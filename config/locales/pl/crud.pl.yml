@@ -19,3 +19,6 @@ pl:
     tasks:
       update:
         score_updated: Punktacja zaktualizowana
+
+  custom_messages:
+    exam_changed: Przełączono na egzamin %{exam}
