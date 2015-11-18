@@ -14,22 +14,61 @@
             - skills_heading(@group.standard_tasks)
 
         %tr
-          %th
+          %th= ta(Task, :number)
 
           - @group.standard_tasks.each do |task|
-            %th= task.extended_number
-
-        %tr
-          %th= t('.max_points')
-
-          - @group.standard_tasks.each do |task|
-            %th= task.max_points
+            %th
+              = task.extended_number
+              %br
+              = "(#{task.max_points} #{t('points.abbr')})"
 
         %tr
           %th= t('.average_score')
 
           - @group.standard_tasks.each do |task|
             %th= task.average_score(@group, 'standard')
+
+        %tr
+          %th= t('.average_percentage')
+
+          - @group.standard_tasks.each do |task|
+            %th= number_to_percentage(task.average_percentage(@group, 'standard'))
+
+        %tr
+          %th= t('.median')
+
+          - @group.standard_tasks.each do |task|
+            %th= task.median(@group, 'standard')
+
+        %tr
+          %th= t('.mode')
+
+          - @group.standard_tasks.each do |task|
+            %th= task.mode(@group, 'standard')
+
+        %tr
+          %th= t('.min')
+
+          - @group.standard_tasks.each do |task|
+            %th= task.min(@group, 'standard')
+
+        %tr
+          %th= t('.max')
+
+          - @group.standard_tasks.each do |task|
+            %th= task.max(@group, 'standard')
+
+        %tr
+          %th= t('.sum')
+
+          - @group.standard_tasks.each do |task|
+            %th= task.total(@group, 'standard')
+
+        %tr
+          %th= t('.easiness')
+
+          - @group.standard_tasks.each do |task|
+            %th= task.easiness(@group, 'standard')
 
         - @group.students.standard.each do |student|
           %tr
@@ -43,15 +82,15 @@
       %table.fixed-table
         %tr
           %th.wider-cell
-            - skills_heading(@group.students.first.extended_tasks)
+            - skills_heading(@group.extended_tasks)
 
         %tr
           %th.wider-cell= tc(Student)
 
-          - @group.students.first.extended_tasks.each do |task|
+          - @group.extended_tasks.each do |task|
             %th= task.extended_number
 
-        - @group.students.each do |student|
+        - @group.students.extended.each do |student|
           %tr
             %td= student.name
             - student.extended_tasks.each do |task|
@@ -63,15 +102,15 @@
       %table.fixed-table
         %tr
           %th.wider-cell
-            - skills_heading(@group.students.first.bilingual_tasks)
+            - skills_heading(@group.bilingual_tasks)
 
         %tr
           %th.wider-cell= tc(Student)
 
-          - @group.students.first.bilingual_tasks.each do |task|
+          - @group.bilingual_tasks.each do |task|
             %th= task.extended_number
 
-        - @group.students.each do |student|
+        - @group.students.bilingual.each do |student|
           %tr
             %td= student.name
             - student.bilingual_tasks.each do |task|

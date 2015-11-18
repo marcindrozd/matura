@@ -15,3 +15,7 @@ pl:
   confirm: 'Czy na pewno?'
   sign_in: Zaloguj
   sign_out: Wyloguj
+
+  points:
+    full: Punkty
+    abbr: 'pkt.'
