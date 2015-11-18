@@ -1,6 +1,9 @@
 pl:
-  number: L.p.
+  order: L.p.
   actions: Akcje
+
+  log_in: Logowanie
+  remember_me: Zapamiętaj mnie
 
   back: Powrót
   edit: Edytuj

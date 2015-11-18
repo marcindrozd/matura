@@ -1,12 +1,12 @@
 .page-heading
   .heading-accent
-  %h1= t('.log_in')
+  %h1= t('log_in')
 
 .devise-form
   = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .form-inputs
       = f.input :login, required: false, autofocus: true
       = f.input :password, required: false
-      = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+      = f.input :remember_me, as: :boolean, label: t('remember_me') if devise_mapping.rememberable?
     .form-actions
       = f.button :submit, t('sign_in'), class: 'btn btn-info'
