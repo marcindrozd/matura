@@ -13,7 +13,7 @@ class Student < ActiveRecord::Base
   scope :bilingual, -> { where level: 'bilingual' }
 
   def sum_scores_by_task(task_id)
-    scores.standard.where('tasks.id = ?', task_id).sum(:score)
+    scores.joins(subtask: :task).where('tasks.id = ?', task_id).sum(:score)
   end
 
   def standard_tasks
@@ -30,5 +30,18 @@ class Student < ActiveRecord::Base
 
   def exam
     group.exam
+  end
+
+  def total_for_all_tasks(level)
+    scores.joins(subtask: :task).where('tasks.level = ?', level).sum(:score)
+  end
+
+  def score_percentage(group, level)
+    total = group.tasks.where(level: level).uniq.map { |t| t.max_points }.reduce(:+)
+    if total == 0
+      0
+    else
+      (total_for_all_tasks(level).to_f / total) * 100
+    end
   end
 end
