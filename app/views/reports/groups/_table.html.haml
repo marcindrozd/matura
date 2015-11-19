@@ -1,0 +1,99 @@
+%table.fixed-table
+  %tr
+    %th.wider-cell
+      - skills_heading(group_tasks)
+    %th= t('total')
+    %th %
+
+  %tr
+    %th= ta(Task, :number)
+
+    - group_tasks.each do |task|
+      %th
+        = task.extended_number
+        %br
+        = "(#{task.max_points} #{t('points.abbr')})"
+
+    %th= group_tasks.map { |t| t.max_points }.reduce(:+)
+    %th
+
+  %tr
+    %th= t('.average_score')
+
+    - group_tasks.each do |task|
+      %th= task.average_score(group, level)
+
+    %th
+    %th
+
+  %tr
+    %th= t('.average_percentage')
+
+    - group_tasks.each do |task|
+      %th= number_to_percentage(task.average_percentage(group, level))
+
+    %th
+    %th
+
+  %tr
+    %th= t('.median')
+
+    - group_tasks.each do |task|
+      %th= task.median(group, level)
+
+    %th
+    %th
+
+  %tr
+    %th= t('.mode')
+
+    - group_tasks.each do |task|
+      %th= task.mode(group, level)
+
+    %th
+    %th
+
+  %tr
+    %th= t('.min')
+
+    - group_tasks.each do |task|
+      %th= task.min(group, level)
+
+    %th
+    %th
+
+  %tr
+    %th= t('.max')
+
+    - group_tasks.each do |task|
+      %th= task.max(group, level)
+
+    %th
+    %th
+
+  %tr
+    %th= t('.sum')
+
+    - group_tasks.each do |task|
+      %th= task.total(group, level)
+
+    %th
+    %th
+
+  %tr
+    %th= t('.easiness')
+
+    - group_tasks.each do |task|
+      %th= task.easiness(group, level).round(2)
+
+    %th
+    %th
+
+  - group_students.each do |student|
+    %tr
+      %td= student.name
+      - student.standard_tasks.each do |task|
+        %td= task.full_score(student)
+
+      %td= student.total_for_all_tasks(level)
+      %td= number_to_percentage(student.score_percentage(student.group, level))
