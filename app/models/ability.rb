@@ -28,10 +28,19 @@ class Ability
   end
 
   def teacher_abilities
-    # not implemented yet
+    can :set_current, Exam
+    can :read, Group, id: user_group_ids
+    can :edit, Group, id: user_group_ids
+    can :manage, Student, group_id: user_group_ids
+    can :manage, Task, students: { group_id: user_group_ids }
+    # can :manage, Score, students: { group_id: user_group_ids }
   end
 
   def default_abilities
-    can :read, User
+    can :read, Exam
+  end
+
+  def user_group_ids
+    user.groups.pluck(:id)
   end
 end
