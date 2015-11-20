@@ -1,5 +1,5 @@
 # paths
-app_path = "/home/depoly/matura"
+app_path = "/home/deploy/matura"
 working_directory "#{app_path}/current"
 pid               "#{app_path}/current/tmp/pids/unicorn.pid"
 
