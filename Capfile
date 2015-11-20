@@ -22,6 +22,7 @@ require 'capistrano/deploy'
 # require 'capistrano/rails/migrations'
 require 'capistrano/bundler'
 require 'capistrano/rails'
+require 'capistrano/secrets_yml'
 
 require 'capistrano/setup'
 require 'capistrano/deploy'

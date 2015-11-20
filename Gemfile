@@ -33,6 +33,7 @@ gem 'capistrano-bundler', '~> 1.1.2'
 gem 'capistrano-rails', '~> 1.1.1'
 gem 'capistrano-rbenv', github: "capistrano/rbenv"
 gem 'capistrano3-unicorn'
+gem 'capistrano-secrets-yml', '~> 1.0.0'
 
 gem 'font-awesome-rails'
 
