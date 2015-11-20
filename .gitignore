@@ -17,4 +17,6 @@
 /tmp
 /config/*.yml
 
+/config/unicorn.rb
+
 /coverage/*
