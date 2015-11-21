@@ -1,47 +1,52 @@
-# paths
-app_path = "/home/deploy/matura"
-working_directory "#{app_path}/current"
-pid               "#{app_path}/current/tmp/pids/unicorn.pid"
+# Set the current app's path for later reference. Rails.root isn't available at
+# this point, so we have to point up a directory.
+app_path = File.expand_path(File.dirname(__FILE__) + '/..')
 
-# listen
-listen "#{app_path}/shared/sockets/unicorn.sock", :backlog => 64
+# The number of worker processes you have here should equal the number of CPU
+# cores your server has.
+worker_processes (ENV['RAILS_ENV'] == 'production' ? 2 : 1)
 
-# logging
-stderr_path "log/unicorn.stderr.log"
-stdout_path "log/unicorn.stdout.log"
+# You can listen on a port or a socket. Listening on a socket is good in a
+# production environment, but listening on a port can be useful for local
+# debugging purposes.
+listen app_path + '/tmp/unicorn.sock', backlog: 64
 
-# workers
-worker_processes 3
+# For development, you may want to listen on port 3000 so that you can make sure
+# your unicorn.rb file is soundly configured.
+listen(3000, backlog: 64) if ENV['RAILS_ENV'] == 'development'
 
-# use correct Gemfile on restarts
-before_exec do |server|
-  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
-end
+# After the timeout is exhausted, the unicorn worker will be killed and a new
+# one brought up in its place. Adjust this to your application's needs. The
+# default timeout is 60. Anything under 3 seconds won't work properly.
+timeout 300
 
-# preload
+# Set the working directory of this unicorn instance.
+working_directory app_path
+
+# Set the location of the unicorn pid file. This should match what we put in the
+# unicorn init script later.
+pid app_path + '/tmp/unicorn.pid'
+
+# You should define your stderr and stdout here. If you don't, stderr defaults
+# to /dev/null and you'll lose any error logging when in daemon mode.
+stderr_path app_path + '/log/unicorn.stderr.log'
+stdout_path app_path + '/log/unicorn.stdout.log'
+
+# Load the app up before forking.
 preload_app true
 
-before_fork do |server, worker|
-  # the following is highly recomended for Rails + "preload_app true"
-  # as there's no need for the master process to hold a connection
-  if defined?(ActiveRecord::Base)
-    ActiveRecord::Base.connection.disconnect!
-  end
+# Garbage collection settings.
+GC.respond_to?(:copy_on_write_friendly=) &&
+  GC.copy_on_write_friendly = true
 
-  # Before forking, kill the master process that belongs to the .oldbin PID.
-  # This enables 0 downtime deploys.
-  old_pid = "#{server.config[:pid]}.oldbin"
-  if File.exists?(old_pid) && server.pid != old_pid
-    begin
-      Process.kill("QUIT", File.read(old_pid).to_i)
-    rescue Errno::ENOENT, Errno::ESRCH
-      # someone else did our job for us
-    end
-  end
+# If using ActiveRecord, disconnect (from the database) before forking.
+before_fork do |server, worker|
+  defined?(ActiveRecord::Base) &&
+    ActiveRecord::Base.connection.disconnect!
 end
 
+# After forking, restore your ActiveRecord connection.
 after_fork do |server, worker|
-  if defined?(ActiveRecord::Base)
+  defined?(ActiveRecord::Base) &&
     ActiveRecord::Base.establish_connection
-  end
 end
