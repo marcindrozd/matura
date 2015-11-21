@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-modal-rails'
 gem 'sass-rails', '~> 5.0'
+gem 'font-awesome-rails'
 
 gem 'normalize-rails'
 gem 'bourbon'
@@ -27,15 +28,6 @@ gem 'simple_form'
 gem 'cocoon'
 
 gem 'unicorn'
-
-gem 'capistrano', '~> 3.1.0'
-gem 'capistrano-bundler', '~> 1.1.2'
-gem 'capistrano-rails', '~> 1.1.1'
-gem 'capistrano-rbenv', github: "capistrano/rbenv"
-gem 'capistrano3-unicorn'
-gem 'capistrano-secrets-yml', '~> 1.0.0'
-
-gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug'
