@@ -37,7 +37,9 @@ class Student < ActiveRecord::Base
   end
 
   def score_percentage(group, level)
-    total = group.tasks.where(level: level).uniq.map { |t| t.max_points }.reduce(:+)
+    group_tasks = group.tasks.where(level: level).uniq
+    total = group_tasks.any? ? group.tasks.where(level: level).uniq.map { |t| t.max_points }.reduce(:+) : 0
+
     if total == 0
       0
     else

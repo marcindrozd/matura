@@ -8,44 +8,15 @@
   %li.tab-header-and-content
     %a.tab-link.is-active{:href => "#"} Podstawa
     .tab-content
-      = render 'table', group: @group, group_tasks: @group.standard_tasks, group_students: @group.students.standard, level: 'standard'
+      = render 'table', group: @group, group_tasks: @standard_tasks, group_students: @standard_students, level: 'standard'
 
   %li.tab-header-and-content
     %a.tab-link{:href => "#"} Rozszerzenie
     .tab-content
-      %table.fixed-table
-        %tr
-          %th.wider-cell
-            - skills_heading(@group.extended_tasks)
+      = render 'table', group: @group, group_tasks: @extended_tasks, group_students: @extended_students, level: 'extended'
 
-        %tr
-          %th.wider-cell= tc(Student)
-
-          - @group.extended_tasks.each do |task|
-            %th= task.extended_number
-
-        - @group.students.extended.each do |student|
-          %tr
-            %td= student.name
-            - student.extended_tasks.each do |task|
-              %td= task.full_score(student)
 
   %li.tab-header-and-content
     %a.tab-link{:href => "#"} Dwujęzyczne
     .tab-content
-      %table.fixed-table
-        %tr
-          %th.wider-cell
-            - skills_heading(@group.bilingual_tasks)
-
-        %tr
-          %th.wider-cell= tc(Student)
-
-          - @group.bilingual_tasks.each do |task|
-            %th= task.extended_number
-
-        - @group.students.bilingual.each do |student|
-          %tr
-            %td= student.name
-            - student.bilingual_tasks.each do |task|
-              %td= task.full_score(student)
+      = render 'table', group: @group, group_tasks: @bilingual_tasks, group_students: @bilingual_students, level: 'bilingual'
