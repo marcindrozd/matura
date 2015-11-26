@@ -163,6 +163,7 @@ pl:
       not_saved:
         one: "1 błąd uniemożliwił wykonanie akcji:"
         other: "%{count} błędy uniemożliwiły wykonanie akcji:"
+      cannot_be_larger_than_max_poins: 'nie może być wyższy niż %{max_points}'
 
     template:
       body: ! 'Błędy dotyczą następujących pól:'

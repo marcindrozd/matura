@@ -16,6 +16,7 @@ class Exam::TasksController < Exam::BaseController
         redirect_to edit_exam_group_url(@student.group), notice: t('.score_updated')
       end
     else
+      @scores = @task.scores.where(student: @student)
       render :edit
     end
   end
