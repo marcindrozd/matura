@@ -5,12 +5,14 @@ class Reports::GroupsController < Reports::BaseController
   end
 
   def show
-    @standard_tasks = @group.standard_tasks
-    @extended_tasks = @group.extended_tasks
-    @bilingual_tasks = @group.bilingual_tasks
+    scores_reporter
+  end
 
-    @standard_students = @group.students.standard
-    @extended_students = @group.students.extended
-    @bilingual_students = @group.students.bilingual
+  private
+
+  def scores_reporter
+    @standard_scores_reporter ||= ScoresReporter.new @group, 'standard'
+    @extended_scores_reporter ||= ScoresReporter.new @group, 'extended'
+    @bilingual_scores_reporter ||= ScoresReporter.new @group, 'bilingual'
   end
 end

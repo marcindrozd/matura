@@ -3,20 +3,23 @@
   %h1= @group.name
 
   .actions
-
+  
 %ul.accordion-tabs-minimal
-  %li.tab-header-and-content
-    %a.tab-link.is-active{:href => "#"} Podstawa
-    .tab-content
-      = render 'table', group: @group, group_tasks: @standard_tasks, group_students: @standard_students, level: 'standard'
+  - if @standard_scores_reporter.tasks.any?
+    %li.tab-header-and-content
+      %a.tab-link.is-active{:href => "#"} Podstawa
+      .tab-content
+        = render 'table', scores_reporter: @standard_scores_reporter
 
-  %li.tab-header-and-content
-    %a.tab-link{:href => "#"} Rozszerzenie
-    .tab-content
-      = render 'table', group: @group, group_tasks: @extended_tasks, group_students: @extended_students, level: 'extended'
+  - if @extended_scores_reporter.tasks.any?
+    %li.tab-header-and-content
+      %a.tab-link{:href => "#"} Rozszerzenie
+      .tab-content
+        = render 'table', scores_reporter: @extended_scores_reporter
 
 
-  %li.tab-header-and-content
-    %a.tab-link{:href => "#"} Dwujęzyczne
-    .tab-content
-      = render 'table', group: @group, group_tasks: @bilingual_tasks, group_students: @bilingual_students, level: 'bilingual'
+  - if @bilingual_scores_reporter.tasks.any?
+    %li.tab-header-and-content
+      %a.tab-link{:href => "#"} Dwujęzyczne
+      .tab-content
+        = render 'table', scores_reporter: @bilingual_scores_reporter

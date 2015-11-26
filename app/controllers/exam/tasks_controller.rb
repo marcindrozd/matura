@@ -8,7 +8,13 @@ class Exam::TasksController < Exam::BaseController
 
   def update
     if @task.update task_params
-      redirect_to edit_exam_group_url(@student.group), notice: t('.score_updated')
+      next_task = @student.tasks.where(level: @task.level).where('tasks.number > ?', @task.number).first
+      
+      if next_task
+        redirect_to edit_exam_student_task_url(@student, next_task)
+      else
+        redirect_to edit_exam_group_url(@student.group), notice: t('.score_updated')
+      end
     else
       render :edit
     end
