@@ -7,7 +7,10 @@ class Exam::TasksController < Exam::BaseController
   end
 
   def update
-    if @task.update task_params
+    @scores = Score.update(params[:scores].keys, params[:scores].values)
+    @scores.reject! { |s| s.errors.empty? }
+
+    if @scores.empty?
       next_task = @student.tasks.where(level: @task.level).where('tasks.number > ?', @task.number).first || @student.tasks.where(level: @task.level).where('tasks.number >= ? AND tasks.secondary_number > ?', @task.number, @task.secondary_number).first
       
       if next_task
@@ -16,14 +19,7 @@ class Exam::TasksController < Exam::BaseController
         redirect_to edit_exam_group_url(@student.group), notice: t('.score_updated')
       end
     else
-      @scores = @task.scores.where(student: @student)
       render :edit
     end
-  end
-
-  private
-
-  def task_params
-    params.require(:task).permit(scores_attributes: [:id, :score, :_destroy])
   end
 end

@@ -5,11 +5,24 @@
   .actions
     = link_to t('back'), edit_exam_group_path(@student.group), class: 'btn btn-info'
 
-= simple_form_for [:exam, @student, @task] do |f|
+/ = simple_form_for [:exam, @student, @task] do |f|
+/   %table
+/     %tr
+/       - @scores.each do |score|
+/         = f.simple_fields_for :scores, score do |s_f|
+/           %td= s_f.input :score, label: score.subtask.number
+
+/   = f.submit t('save'), class: 'btn btn-info'
+
+
+= form_tag exam_student_task_path(@student, @task), method: :put do
   %table
     %tr
       - @scores.each do |score|
-        = f.simple_fields_for :scores, score do |s_f|
-          %td= s_f.input :score, label: score.subtask.number
+        = fields_for 'scores[]', score do |f|
+          %td
+            = f.label score.subtask.number
+            = f.text_field :score
+            = show_errors(score, :score)
 
-  = f.submit t('save'), class: 'btn btn-info'
+  = submit_tag t('save'), class: 'btn btn-info'
