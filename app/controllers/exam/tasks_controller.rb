@@ -8,7 +8,7 @@ class Exam::TasksController < Exam::BaseController
 
   def update
     if @task.update task_params
-      next_task = @student.tasks.where(level: @task.level).where('tasks.number > ?', @task.number).first
+      next_task = @student.tasks.where(level: @task.level).where('tasks.number > ?', @task.number).first || @student.tasks.where(level: @task.level).where('tasks.number >= ? AND tasks.secondary_number > ?', @task.number, @task.secondary_number).first
       
       if next_task
         redirect_to edit_exam_student_task_url(@student, next_task)
