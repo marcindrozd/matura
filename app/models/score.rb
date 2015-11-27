@@ -19,7 +19,7 @@ class Score < ActiveRecord::Base
   private
 
   def score_cannot_be_larger_than_max_points
-    if score > subtask.max_points
+    if score && score > subtask.max_points
       errors.add(:score, I18n.t('errors.messages.cannot_be_larger_than_max_poins', max_points: subtask.max_points))
     end
   end

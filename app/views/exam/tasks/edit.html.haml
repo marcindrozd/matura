@@ -13,6 +13,6 @@
           %td
             = f.label score.subtask.number
             = f.text_field :score
-            = show_errors(score, :score)
+            .error= show_errors(score, :score)
 
   = submit_tag t('save'), class: 'btn btn-info'
