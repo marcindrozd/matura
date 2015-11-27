@@ -35,12 +35,7 @@ class ScoresReporter < ApplicationReporter
   end
 
   def group_average_percentage
-    results = Array.new(tasks.count, 0)
-    @students_results.each do |student|
-      results = [results, student.tasks].transpose.map { |r| r.sum }
-    end
-    results.map { |r| r.to_f / @students_results.count }
-    # results = @students_results.map { |r| r.tasks }.transpose.map{ |a| a.sum }
+    [group_average_score, max_points_per_task].transpose.map { |a, m| (a / m) * 100 }
   end
 
   def group_median
@@ -117,7 +112,7 @@ class ScoresReporter < ApplicationReporter
     total = total || 0
 
     student_tasks = student.send("#{level}_tasks")
-    total / total_points_for_tasks.to_f
+    (total / total_points_for_tasks.to_f) * 100
   end
 
   def mapped_tasks_results
