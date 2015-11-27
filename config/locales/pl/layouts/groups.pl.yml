@@ -16,3 +16,8 @@ pl:
       index:
         title: Grupy
         enter_scores: Wpisz wyniki
+  reports:
+    groups:
+      index:
+        title: Grupy
+
