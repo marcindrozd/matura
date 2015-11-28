@@ -1,6 +1,6 @@
 .page-heading
   .heading-accent
-  %h1= "#{tc(Task)}: #{@task.number} / #{@student.group.name} - #{@student.name}"
+  %h1= task_title(@task, @student)
 
   .actions
     = link_to t('back'), edit_exam_group_path(@student.group), class: 'btn btn-info'
