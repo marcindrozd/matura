@@ -7,7 +7,7 @@
 
 = form_tag exam_student_task_path(@student, @task), method: :put do
   %table
-    %tr
+    %tr#scores-input
       - @scores.each do |score|
         = fields_for 'scores[]', score do |f|
           %td.center
