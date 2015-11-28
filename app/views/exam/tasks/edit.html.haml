@@ -10,9 +10,9 @@
     %tr
       - @scores.each do |score|
         = fields_for 'scores[]', score do |f|
-          %td
-            = f.label score.subtask.number
-            = f.text_field :score
+          %td.center
+            .w35= f.label score.subtask.number
+            .w35= f.text_field :score
             .error= show_errors(score, :score)
 
   = submit_tag t('save'), class: 'btn btn-info'

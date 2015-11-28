@@ -3,7 +3,7 @@ class Exam::TasksController < Exam::BaseController
   load_and_authorize_resource through: :student
 
   def edit
-    @scores = @task.scores.where(student: @student)
+    @scores = @task.scores.where(student: @student).ordered
   end
 
   def update

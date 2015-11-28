@@ -4,6 +4,7 @@ class Score < ActiveRecord::Base
 
   validate :score_cannot_be_larger_than_max_points
 
+  scope :ordered, -> { joins(subtask: :task).order('subtasks.number asc') }
   scope :standard, -> { joins(subtask: :task).where('tasks.level = ?', 'standard').order('tasks.number asc').order('subtasks.number asc') }
   scope :extended, -> { joins(subtask: :task).where('tasks.level = ?', 'extended').order('tasks.number asc').order('subtasks.number asc') }
   scope :bilingual, -> { joins(subtask: :task).where('tasks.level = ?', 'bilingual').order('tasks.number asc').order('subtasks.number asc') }
