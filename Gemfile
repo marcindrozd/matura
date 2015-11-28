@@ -26,6 +26,7 @@ gem 'ransack'
 gem 'kaminari'
 gem 'simple_form'
 gem 'cocoon'
+gem 'axlsx_rails'
 
 gem 'unicorn'
 

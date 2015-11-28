@@ -3,6 +3,7 @@
   %h1= @group.name
 
   .actions
+    = fa_link 'XLS', url_for(format: :xlsx), :download, class: 'btn btn-success'
     = link_to t('back'), reports_groups_path, class: 'btn btn-info'
   
 %ul.accordion-tabs-minimal

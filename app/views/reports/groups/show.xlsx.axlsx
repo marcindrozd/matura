@@ -1,0 +1,31 @@
+wb = xlsx_package.workbook
+
+wb.add_worksheet(name: 'Podstawa') do |sheet|
+  bind_xls_helpers(sheet)
+
+  #### Styles
+  default = xls_default_style
+  header = xls_header_style
+  table_header = xls_table_header_style
+  text = xls_text_style
+  date = xls_date_style
+  percent = xls_percent_style
+  float_1 = xls_float_1_style
+  float_3 = xls_float_1_style
+  overall_default = xls_overall_default_style
+  overall_percent = xls_overall_percent_style
+  overall_float_1 = xls_overall_float_1_style
+  overall_float_3 = xls_overall_float_3_style
+
+  skill_names = []
+  @standard_scores_reporter.tasks.map { |t| t.skill }.uniq.each do |skill_name|
+    skill_names << ([skill_name] + [""] * @standard_scores_reporter.tasks.where(skill: skill_name).count).flatten
+  end
+
+  #### Spreadsheet
+  sheet.add_row [
+    '',
+    skill_names
+    ].flatten, style: table_header, height: 28
+
+end

@@ -6,6 +6,13 @@ class Reports::GroupsController < Reports::BaseController
 
   def show
     scores_reporter
+
+    respond_to do |format|
+      format.html
+      format.xlsx do
+        render xlsx: 'show', filename: 'Exam'
+      end
+    end
   end
 
   private
