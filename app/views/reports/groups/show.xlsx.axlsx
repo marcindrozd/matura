@@ -151,6 +151,4 @@ wb.add_worksheet(name: 'Podstawa') do |sheet|
       number_to_percentage(student.percentage)
     ].flatten, style: default
   end
-
-  sheet.merge_cells 'C1:E1'
 end
