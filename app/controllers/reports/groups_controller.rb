@@ -10,7 +10,7 @@ class Reports::GroupsController < Reports::BaseController
     respond_to do |format|
       format.html
       format.xlsx do
-        render xlsx: 'show', filename: 'Exam'
+        render xlsx: 'show', filename: "#{current_exam.name} - #{timestamp}"
       end
     end
   end

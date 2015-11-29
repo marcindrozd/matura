@@ -75,7 +75,7 @@ module XlsxHelper
     sheet.styles.add_style(
       sz: big_sz,
       b: true,
-      bg_color: 'DDDDDD',
+      bg_color: 'EAE2D6',
       border: { style: :thin, color: '000000' },
       alignment: center_alignment
     )
@@ -85,7 +85,7 @@ module XlsxHelper
     sheet.styles.add_style(
       sz: big_sz,
       b: true,
-      bg_color: 'DDDDDD',
+      bg_color: 'EAE2D6',
       border: { style: :thin, color: '000000' },
       alignment: right_alignment
     )
@@ -95,7 +95,7 @@ module XlsxHelper
     sheet.styles.add_style(
       b: true,
       sz: base_sz,
-      bg_color: 'EEEEEE',
+      bg_color: 'EAE2D6',
       border: { style: :thin, color: '000000' },
       alignment: center_alignment.merge(wrap_text: true)
     )
