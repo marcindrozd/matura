@@ -6,3 +6,8 @@ pl:
         remove_student: Usuń ostatniego ucznia
         amend_students_number: Zmień liczbę uczniów
         enter_number: Podaj nową liczbę
+        select_level: Wybierz poziom
+        standard_students: Podstawa
+        extended_students: Rozszerzeni
+        bilingual_students: Dwujęzyczni
+        warning: 'Uwaga! Podanie liczby uczniów mniejszej niż aktualna ilość w grupie spowoduje usunięcie odpowiedniej liczby uczniów i ich ocen!'

@@ -9,7 +9,7 @@
   .users-list
     .row
       .col-4
-        = t('.standard_students')
+        %h3= t('.standard_students')
         %table
           %tr
             %th= t('order')
@@ -24,7 +24,7 @@
           = link_to t('.remove_student'), admin_group_student_path(@group, @group.students.standard.last), method: :delete, class: 'btn btn-danger'
 
       .col-4
-        = t('.extended_students')
+        %h3= t('.extended_students')
         %table
           %tr
             %th= t('order')
@@ -39,7 +39,7 @@
           = link_to t('.remove_student'), admin_group_student_path(@group, @group.students.extended.last), method: :delete, class: 'btn btn-danger'
 
       .col-4.col-last
-        = t('.bilingual_students')
+        %h3= t('.bilingual_students')
         %table
           %tr
             %th= t('order')
@@ -54,14 +54,18 @@
           = link_to t('.remove_student'), admin_group_student_path(@group, @group.students.bilingual.last), method: :delete, class: 'btn btn-danger'
 
 %div{ id: 'amend-students-number', class: 'students-number-modal' }
+  %p.important= t('.warning')
+
   = form_tag update_number_admin_group_students_path(@group), method: :put do
-    %p
-      = t('.enter_number')
-    %p
-      = text_field_tag :students_count
-    %p
-      = t('.select_level')
-      = select_tag :students_level, options_for_select(Student::LEVELS)
-    %p
-      = submit_tag t('save'), class: 'btn btn-info'
-      = link_to t('cancel'), '#close-modal', rel: 'modal:close', class: 'btn btn-info'
+    .row
+      .col-6
+        = t('.enter_number')
+        %br
+        = text_field_tag :students_count
+      .col-6.col-last
+        = t('.select_level')
+        = select_tag :students_level, options_for_select(task_levels_for_select), include_blank: false
+    .row
+      .col-12
+        = submit_tag t('save'), class: 'btn btn-info'
+        = link_to t('cancel'), '#close-modal', rel: 'modal:close', class: 'btn btn-info'
