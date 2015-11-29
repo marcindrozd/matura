@@ -20,4 +20,13 @@ pl:
     groups:
       index:
         title: Grupy
+      show:
+        average_score: Średnia
+        average_percentage: 'Średnia %'
+        median: Mediana
+        mode: Moda
+        min: Min
+        max: Max
+        sum: Suma
+        easiness: Łatwość
 
