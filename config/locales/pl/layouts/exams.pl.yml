@@ -5,3 +5,7 @@ pl:
         new_exam: Nowy egzamin
       new:
         title: Nowy egzamin
+  exam:
+    tasks:  
+      edit:
+        instructions: '"Tab" przechodzi do kolejnego okienka, "Enter" po wpisaniu wszystkich ocen zapisze je.'

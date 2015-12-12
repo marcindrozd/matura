@@ -1,51 +1,29 @@
+= content_for :title, @group.name
+
 .page-heading
   .heading-accent
   %h1= @group.name
 
   .actions
-
+    = fa_link 'XLS', url_for(format: :xlsx), :download, class: 'btn btn-success'
+    = link_to t('back'), reports_groups_path, class: 'btn btn-info'
+  
 %ul.accordion-tabs-minimal
-  %li.tab-header-and-content
-    %a.tab-link.is-active{:href => "#"} Podstawa
-    .tab-content
-      = render 'table', group: @group, group_tasks: @group.standard_tasks, group_students: @group.students.standard, level: 'standard'
+  - if @standard_scores_reporter.tasks.any?
+    %li.tab-header-and-content
+      %a.tab-link.is-active{:href => "#"}= t('task.levels.standard')
+      .tab-content
+        = render 'table', scores_reporter: @standard_scores_reporter
 
-  %li.tab-header-and-content
-    %a.tab-link{:href => "#"} Rozszerzenie
-    .tab-content
-      %table.fixed-table
-        %tr
-          %th.wider-cell
-            - skills_heading(@group.extended_tasks)
+  - if @extended_scores_reporter.tasks.any?
+    %li.tab-header-and-content
+      %a.tab-link{:href => "#"}= t('task.levels.extended')
+      .tab-content
+        = render 'table', scores_reporter: @extended_scores_reporter
 
-        %tr
-          %th.wider-cell= tc(Student)
 
-          - @group.extended_tasks.each do |task|
-            %th= task.extended_number
-
-        - @group.students.extended.each do |student|
-          %tr
-            %td= student.name
-            - student.extended_tasks.each do |task|
-              %td= task.full_score(student)
-
-  %li.tab-header-and-content
-    %a.tab-link{:href => "#"} Dwujęzyczne
-    .tab-content
-      %table.fixed-table
-        %tr
-          %th.wider-cell
-            - skills_heading(@group.bilingual_tasks)
-
-        %tr
-          %th.wider-cell= tc(Student)
-
-          - @group.bilingual_tasks.each do |task|
-            %th= task.extended_number
-
-        - @group.students.bilingual.each do |student|
-          %tr
-            %td= student.name
-            - student.bilingual_tasks.each do |task|
-              %td= task.full_score(student)
+  - if @bilingual_scores_reporter.tasks.any?
+    %li.tab-header-and-content
+      %a.tab-link{:href => "#"}= t('task.levels.bilingual')
+      .tab-content
+        = render 'table', scores_reporter: @bilingual_scores_reporter

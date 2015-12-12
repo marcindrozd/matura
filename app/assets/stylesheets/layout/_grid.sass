@@ -1,6 +1,10 @@
 @for $i from 1 to 11
   .col-#{$i}
     +span-columns($i)
+  .w#{$i*5}
+    width: #{$i*5}px
+  .mw#{$i*5}
+    max-width: #{$i*5}px
 
   .shift-#{$i}
     +shift($i)
@@ -19,6 +23,9 @@
 
 .pull-right
   float: right
+
+.center
+  text-align: center
 
 // custom
 .col-8-of-9

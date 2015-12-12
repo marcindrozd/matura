@@ -1,0 +1,5 @@
+wb = xlsx_package.workbook
+
+render 'sheet', scores_reporter: @standard_scores_reporter, wb: wb, name: 'Podstawa' if @standard_scores_reporter.tasks.any?
+render 'sheet', scores_reporter: @extended_scores_reporter, wb: wb, name: 'Rozszerzenie' if @extended_scores_reporter.tasks.any?
+render 'sheet', scores_reporter: @bilingual_scores_reporter, wb: wb, name: 'Dwujęzyczna' if @bilingual_scores_reporter.tasks.any?

@@ -26,6 +26,7 @@ gem 'ransack'
 gem 'kaminari'
 gem 'simple_form'
 gem 'cocoon'
+gem 'axlsx_rails'
 
 gem 'unicorn'
 
@@ -36,6 +37,7 @@ group :development, :test do
   gem 'pry'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '~> 3.0'
+  gem 'rack-mini-profiler'
 end
 
 group :development do

@@ -3,10 +3,11 @@
   %h1= @group.name
 
   .actions
+    = link_to t('back'), exam_groups_path, class: 'btn btn-info'
 
 %ul.accordion-tabs-minimal
   %li.tab-header-and-content
-    %a.tab-link.is-active{:href => "#"} Podstawa
+    %a.tab-link.is-active{:href => "#"}= t('task.levels.standard')
     .tab-content
       %table.fixed-table
         %tr
@@ -26,7 +27,7 @@
               %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
 
   %li.tab-header-and-content
-    %a.tab-link{:href => "#"} Rozszerzenie
+    %a.tab-link{:href => "#"}= t('task.levels.extended')
     .tab-content
       %table.fixed-table
         %tr
@@ -46,7 +47,7 @@
               %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
 
   %li.tab-header-and-content
-    %a.tab-link{:href => "#"} Dwujęzyczne
+    %a.tab-link{:href => "#"}= t('task.levels.bilingual')
     .tab-content
       %table.fixed-table
         %tr

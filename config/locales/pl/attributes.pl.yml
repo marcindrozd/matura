@@ -11,6 +11,7 @@ pl:
         role: Rola
         password: Hasło
         password_confirmation: Potwierdzenie hasła
+        groups: Grupy
       group:
         name: Nazwa
         kind: Rodzaj

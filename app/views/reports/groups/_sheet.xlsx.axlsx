@@ -1,0 +1,152 @@
+wb.add_worksheet(name: name) do |sheet|
+  bind_xls_helpers(sheet)
+
+  #### Styles
+  default = xls_default_style
+  header = xls_header_style
+  table_header = xls_table_header_style
+  text = xls_text_style
+  date = xls_date_style
+  percent = xls_percent_style
+  float_1 = xls_float_1_style
+  float_3 = xls_float_1_style
+  overall_default = xls_overall_default_style
+  overall_percent = xls_overall_percent_style
+  overall_float_1 = xls_overall_float_1_style
+  overall_float_3 = xls_overall_float_3_style
+
+  skill_names = []
+  scores_reporter.tasks.map { |t| t.skill }.uniq.each do |skill_name|
+    skill_names << ([skill_name] + [""] * (scores_reporter.tasks.where(skill: skill_name).count - 1)).flatten
+  end
+
+  scores_heading = []
+  scores_reporter.tasks.each do |task|
+    scores_heading << "#{task.extended_number}\n #{task.max_points} #{t('points.abbr')}"
+  end
+
+  average_scores = []
+  scores_reporter.group_average_score.each do |score|
+    average_scores << score.round(1)
+  end
+
+  average_percentage = []
+  scores_reporter.group_average_percentage.each do |score|
+    average_percentage << number_to_percentage(score)
+  end
+
+  median = []
+  scores_reporter.group_median.each do |score|
+    median << score
+  end
+
+  mode = []
+  scores_reporter.group_mode.each do |score|
+    mode << score
+  end
+
+  min = []
+  scores_reporter.group_min.each do |score|
+    min << score
+  end
+
+  max = []
+  scores_reporter.group_max.each do |score|
+    max << score
+  end
+
+  sum = []
+  scores_reporter.group_sum.each do |score|
+    sum << score
+  end
+
+  easiness = []
+  scores_reporter.group_easiness.each do |score|
+    easiness << score.round(2)
+  end
+
+  #### Spreadsheet
+  sheet.add_row [
+    '',
+    skill_names,
+    t('total'),
+    '%'
+    ].flatten, style: table_header, height: 28
+
+  sheet.add_row [
+    ta(Task, :number),
+    scores_heading,
+    scores_reporter.total_points_for_tasks,
+    ''
+  ].flatten, style: table_header, height: 28
+
+  sheet.add_row [
+    t('.average_score'),
+    average_scores,
+    '',
+    ''
+  ].flatten, style: table_header, height: 28
+
+  sheet.add_row [
+    t('.average_percentage'),
+    average_percentage,
+    '',
+    ''
+  ].flatten, style: table_header, height: 28
+
+  sheet.add_row [
+    t('.median'),
+    median,
+    '',
+    ''
+  ].flatten, style: table_header, height: 28
+
+  sheet.add_row [
+    t('.mode'),
+    mode,
+    '',
+    ''
+  ].flatten, style: table_header, height: 28
+
+  sheet.add_row [
+    t('.min'),
+    min,
+    '',
+    ''
+  ].flatten, style: table_header, height: 28
+
+  sheet.add_row [
+    t('.max'),
+    max,
+    '',
+    ''
+  ].flatten, style: table_header, height: 28
+
+  sheet.add_row [
+    t('.sum'),
+    sum,
+    '',
+    ''
+  ].flatten, style: table_header, height: 28
+
+  sheet.add_row [
+    t('.easiness'),
+    easiness,
+    '',
+    ''
+  ].flatten, style: table_header, height: 28
+
+  scores_reporter.students_results.each do |student|
+    scores = []
+    student.tasks.each do |score|
+      scores << score
+    end
+
+    sheet.add_row [
+      student.name,
+      scores,
+      student.total_for_all_tasks,
+      number_to_percentage(student.percentage)
+    ].flatten, style: default
+  end
+end

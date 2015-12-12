@@ -8,4 +8,10 @@ class BaseController < ApplicationController
     sign_out
     redirect_to new_user_session_url, alert: t('not_authorized')
   end
+
+  private
+
+  def timestamp
+    Time.now.strftime('%d-%m-%Y')
+  end
 end

@@ -1,45 +1,39 @@
 %table.fixed-table
   %tr
     %th.wider-cell
-      - skills_heading(group_tasks)
+      - skills_heading(scores_reporter.tasks)
     %th= t('total')
     %th %
 
   %tr
     %th= ta(Task, :number)
-
-    - group_tasks.each do |task|
+    - scores_reporter.tasks.each do |task|
       %th
         = task.extended_number
         %br
         = "(#{task.max_points} #{t('points.abbr')})"
-
-    %th= group_tasks.map { |t| t.max_points }.reduce(:+)
+    %th= scores_reporter.total_points_for_tasks
     %th
 
   %tr
     %th= t('.average_score')
-
-    - group_tasks.each do |task|
-      %th= task.average_score(group, level)
-
+    - scores_reporter.group_average_score.each do |score|
+      %th= score.round(1)
     %th
     %th
 
   %tr
     %th= t('.average_percentage')
-
-    - group_tasks.each do |task|
-      %th= number_to_percentage(task.average_percentage(group, level))
-
+    - scores_reporter.group_average_percentage.each do |score|
+      %th= number_to_percentage(score)
     %th
     %th
 
   %tr
     %th= t('.median')
 
-    - group_tasks.each do |task|
-      %th= task.median(group, level)
+    - scores_reporter.group_median.each do |score|
+      %th= score
 
     %th
     %th
@@ -47,8 +41,8 @@
   %tr
     %th= t('.mode')
 
-    - group_tasks.each do |task|
-      %th= task.mode(group, level)
+    - scores_reporter.group_mode.each do |score|
+      %th= score
 
     %th
     %th
@@ -56,44 +50,38 @@
   %tr
     %th= t('.min')
 
-    - group_tasks.each do |task|
-      %th= task.min(group, level)
+    - scores_reporter.group_min.each do |score|
+      %th= score
 
     %th
     %th
 
   %tr
     %th= t('.max')
-
-    - group_tasks.each do |task|
-      %th= task.max(group, level)
-
+    - scores_reporter.group_max.each do |score|
+      %th= score
     %th
     %th
 
   %tr
     %th= t('.sum')
-
-    - group_tasks.each do |task|
-      %th= task.total(group, level)
-
+    - scores_reporter.group_sum.each do |score|
+      %th= score
     %th
     %th
 
   %tr
     %th= t('.easiness')
-
-    - group_tasks.each do |task|
-      %th= task.easiness(group, level).round(2)
-
+    - scores_reporter.group_easiness.each do |score|
+      %th= score.round(2)
     %th
     %th
 
-  - group_students.each do |student|
+  - scores_reporter.students_results.each do |student|
     %tr
       %td= student.name
-      - student.standard_tasks.each do |task|
-        %td= task.full_score(student)
+      - student.tasks.each do |score|
+        %td= score
 
-      %td= student.total_for_all_tasks(level)
-      %td= number_to_percentage(student.score_percentage(student.group, level))
+      %td= student.total_for_all_tasks
+      %td= number_to_percentage(student.percentage)

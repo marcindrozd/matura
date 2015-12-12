@@ -1,3 +1,7 @@
+$form-error-color: $alizarin
+$form-error-text-color: $white
+$form-label-color: $gray-6
+
 form
   fieldset
     background-color: $secondary-background-color
@@ -76,3 +80,27 @@ form
 
   .remove_fields
     margin-top: 25px
+
+  .has-hint,
+  .field_with_errors
+    margin-bottom: $small-spacing
+
+    input, select, textarea
+      background-color: $form-error-color
+      border-color: $form-error-color
+      color: $form-error-text-color
+      margin-bottom: 0
+
+    label
+      color: $form-error-color
+
+    .hint
+      display: none
+
+  .hint
+    color: $form-label-color
+    font-size: 0.875em
+
+  .error
+    color: $form-error-color
+    font-size: 0.875em

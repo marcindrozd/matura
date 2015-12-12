@@ -16,3 +16,26 @@ pl:
       index:
         title: Grupy
         enter_scores: Wpisz wyniki
+  reports:
+    groups:
+      index:
+        title: Grupy
+      sheet:
+        average_score: Średnia
+        average_percentage: 'Średnia %'
+        median: Mediana
+        mode: Moda
+        min: Min
+        max: Max
+        sum: Suma
+        easiness: Łatwość
+      table:
+        average_score: Średnia
+        average_percentage: 'Średnia %'
+        median: Mediana
+        mode: Moda
+        min: Min
+        max: Max
+        sum: Suma
+        easiness: Łatwość
+
