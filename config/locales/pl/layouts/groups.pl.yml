@@ -20,7 +20,7 @@ pl:
     groups:
       index:
         title: Grupy
-      show:
+      sheet:
         average_score: Średnia
         average_percentage: 'Średnia %'
         median: Mediana
