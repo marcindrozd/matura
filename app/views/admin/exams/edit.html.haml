@@ -4,6 +4,6 @@
 
   .actions
     = link_to t('back'), admin_exams_path, class: 'btn btn-info'
-    = link_to t('delete'), admin_exam_path(@exam), class: 'btn btn-danger', method: :destroy, data: { confirm: t('confirm') }
+    = link_to t('delete'), admin_exam_path(@exam), class: 'btn btn-danger', method: :delete, data: { confirm: t('confirm') }
 
 = render 'form'
