@@ -3,6 +3,7 @@
   %h1= @task.full_number
 
   .actions
+    = link_to t('add_another'), new_admin_task_path, class: 'btn btn-info'
     = link_to t('back'), admin_tasks_path, class: 'btn btn-info'
     = link_to t('delete'), admin_task_path(@task), class: 'btn btn-danger', method: :delete, data: { confirm: t('confirm') }
 
