@@ -30,7 +30,7 @@ class Task < ActiveRecord::Base
   end
 
   def extended_number
-    description.present? ? "#{number} - #{description}" : number
+    description.present? ? "#{number} - #{description_initials}" : number
   end
 
   def max_points
@@ -83,5 +83,9 @@ class Task < ActiveRecord::Base
 
   def self.levels_collection
     LEVELS.map { |l| [I18n.t("task.levels.#{l}"), l] }
+  end
+
+  def description_initials
+    description.scan(/\b\S/).join
   end
 end
