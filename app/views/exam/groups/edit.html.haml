@@ -14,18 +14,22 @@
           %tr
             %th.wider-cell
               - skills_heading(@group.standard_tasks)
+            %th= t('total')
 
           %tr
             %th.wider-cell= tc(Student)
 
             - @group.standard_tasks.each do |task|
               %th= task.extended_number
+            %th
 
           - @group.students.standard.each do |student|
             %tr
               %td= student.name
               - student.standard_tasks.each do |task|
                 %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
+
+              %td= student.total_for_all_tasks('standard')
 
   %li.tab-header-and-content
     - if @group.extended_tasks.any?
@@ -48,6 +52,8 @@
               - student.extended_tasks.each do |task|
                 %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
 
+              %td= student.total_for_all_tasks('extended')
+
   %li.tab-header-and-content
     - if @group.bilingual_tasks.any?
       %a.tab-link{:href => "#"}= t('task.levels.bilingual')
@@ -68,3 +74,5 @@
               %td= student.name
               - student.bilingual_tasks.each do |task|
                 %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
+
+              %td= student.total_for_all_tasks('bilingual')
