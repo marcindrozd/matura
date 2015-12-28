@@ -8,12 +8,10 @@
   %tr
     %th= t('order')
     %th= ta(Group, :name)
-    %th= ta(Group, :kind)
     %th= t('actions')
 
   - @groups.each_with_index do |group, idx|
     %tr
       %td= idx + 1
       %td= group.name
-      %td= group.kind
       %td= link_to t('.enter_scores'), edit_exam_group_path(group), class: 'btn btn-info'

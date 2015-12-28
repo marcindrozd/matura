@@ -9,7 +9,7 @@ class Admin::UsersController < Admin::BaseController
 
   def create
     if @user.save
-      redirect_to edit_admin_user_path(@user)
+      redirect_to edit_admin_user_path(@user), notice: t('.user_created')
     else
       render :new
     end
@@ -20,7 +20,7 @@ class Admin::UsersController < Admin::BaseController
 
   def update
     if @user.update(user_params)
-      redirect_to edit_admin_user_path(@user)
+      redirect_to edit_admin_user_path(@user), notice: t('.user_updated')
     else
       render :edit
     end

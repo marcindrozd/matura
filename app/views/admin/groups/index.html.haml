@@ -10,7 +10,6 @@
     %tr
       %th= t('order')
       %th= ta(Group, :name)
-      %th= ta(Group, :kind)
       %th= t('.number_of_students')
       %th= t('actions')
 
@@ -18,7 +17,6 @@
       %tr
         %td= idx + 1
         %td= group.name
-        %td= group.kind
         %td= group.students_number
         %td
           = link_to t('edit'), edit_admin_group_path(group), class: 'btn btn-info'

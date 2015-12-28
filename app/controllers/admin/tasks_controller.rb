@@ -12,7 +12,7 @@ class Admin::TasksController < Admin::BaseController
     success, @task = task_service.create
 
     if success
-      redirect_to edit_admin_task_path(@task)
+      redirect_to edit_admin_task_path(@task), notice: t('.task_created')
     else
       render :new
     end
@@ -25,7 +25,7 @@ class Admin::TasksController < Admin::BaseController
     success, @task = task_service.update task_params
 
     if success
-      redirect_to edit_admin_task_path(@task)
+      redirect_to edit_admin_task_path(@task), notice: t('.task_updated')
     else
       render :edit
     end
@@ -33,7 +33,7 @@ class Admin::TasksController < Admin::BaseController
 
   def destroy
     @task.destroy
-    redirect_to admin_tasks_path
+    redirect_to admin_tasks_path, notice: t('.task_destroyed')
   end
 
   private

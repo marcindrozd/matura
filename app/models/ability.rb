@@ -33,6 +33,7 @@ class Ability
     can :edit, Group, id: user_group_ids
     can :manage, Student, group_id: user_group_ids
     can :manage, Task, students: { group_id: user_group_ids }
+    cannot :see, :admin_menu
     # can :manage, Score, students: { group_id: user_group_ids }
   end
 

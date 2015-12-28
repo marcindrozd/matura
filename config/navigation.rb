@@ -44,7 +44,7 @@ SimpleNavigation::Configuration.run do |navigation|
   main_navigation = lambda do |nav|
     nav.item :teacher, label(:teacher, :'pencil-square-o'), '#', &teachers_navigation
     nav.item :reports, label(:reports, :'bar-chart'), '#', &reports_navigation
-    nav.item :admin, label(:admin, :lock), '#', &admin_navigation
+    nav.item :admin, label(:admin, :lock), '#', &admin_navigation if can? :see, :admin_menu
   end
 
   if signed_in?

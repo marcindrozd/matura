@@ -10,6 +10,7 @@ class Task < ActiveRecord::Base
 
   accepts_nested_attributes_for :subtasks, allow_destroy: true
 
+  validates :number, :level, :skill, presence: true
   validates_uniqueness_of :number, scope: [:exam_id, :level, :secondary_number]
 
   scope :standard, -> { where level: 'standard' }
@@ -25,7 +26,7 @@ class Task < ActiveRecord::Base
   end
 
   def full_number
-    "#{number} - #{level}"
+    number.to_s + ' - ' + I18n.t("task.levels.#{level}")
   end
 
   def extended_number

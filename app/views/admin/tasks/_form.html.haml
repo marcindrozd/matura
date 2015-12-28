@@ -3,7 +3,7 @@
     .col-6
       = t('.general')
       = f.input :number
-      = f.input :secondary_number
+      = f.input :secondary_number, label: t('.secondary_number_explanation')
       = f.input :description
       = f.input :level, collection: Task.levels_collection
       = f.input :skill, collection: Task::SKILLS

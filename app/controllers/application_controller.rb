@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       if user.has_role? :admin
         root_url
       elsif user.has_role? :teacher
-        root_url
+        exam_groups_url
       else
         root_url
       end

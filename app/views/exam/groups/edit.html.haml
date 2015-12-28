@@ -6,62 +6,65 @@
     = link_to t('back'), exam_groups_path, class: 'btn btn-info'
 
 %ul.accordion-tabs-minimal
-  %li.tab-header-and-content
-    %a.tab-link.is-active{:href => "#"}= t('task.levels.standard')
-    .tab-content
-      %table.fixed-table
-        %tr
-          %th.wider-cell
-            - skills_heading(@group.standard_tasks)
-
-        %tr
-          %th.wider-cell= tc(Student)
-
-          - @group.standard_tasks.each do |task|
-            %th= task.extended_number
-
-        - @group.students.standard.each do |student|
+  - if @group.standard_tasks.any?
+    %li.tab-header-and-content
+      %a.tab-link.is-active{:href => "#"}= t('task.levels.standard')
+      .tab-content
+        %table.fixed-table
           %tr
-            %td= student.name
-            - student.standard_tasks.each do |task|
-              %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
+            %th.wider-cell
+              - skills_heading(@group.standard_tasks)
 
-  %li.tab-header-and-content
-    %a.tab-link{:href => "#"}= t('task.levels.extended')
-    .tab-content
-      %table.fixed-table
-        %tr
-          %th.wider-cell
-            - skills_heading(@group.extended_tasks)
-
-        %tr
-          %th.wider-cell= tc(Student)
-
-          - @group.extended_tasks.each do |task|
-            %th= task.extended_number
-
-        - @group.students.extended.each do |student|
           %tr
-            %td= student.name
-            - student.extended_tasks.each do |task|
-              %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
+            %th.wider-cell= tc(Student)
+
+            - @group.standard_tasks.each do |task|
+              %th= task.extended_number
+
+          - @group.students.standard.each do |student|
+            %tr
+              %td= student.name
+              - student.standard_tasks.each do |task|
+                %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
 
   %li.tab-header-and-content
-    %a.tab-link{:href => "#"}= t('task.levels.bilingual')
-    .tab-content
-      %table.fixed-table
-        %tr
-          %th.wider-cell
-            - skills_heading(@group.bilingual_tasks)
-
-        %tr
-          %th.wider-cell= tc(Student)
-
-          - @group.bilingual_tasks.each do |task|
-            %th= task.extended_number
-
-        - @group.students.bilingual.each do |student|
+    - if @group.extended_tasks.any?
+      %a.tab-link{:href => "#"}= t('task.levels.extended')
+      .tab-content
+        %table.fixed-table
           %tr
-            %td= student.name
-            - student.bilingual_tasks.each do |task|
-              %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
+            %th.wider-cell
+              - skills_heading(@group.extended_tasks)
+
+          %tr
+            %th.wider-cell= tc(Student)
+
+            - @group.extended_tasks.each do |task|
+              %th= task.extended_number
+
+          - @group.students.extended.each do |student|
+            %tr
+              %td= student.name
+              - student.extended_tasks.each do |task|
+                %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
+
+  %li.tab-header-and-content
+    - if @group.bilingual_tasks.any?
+      %a.tab-link{:href => "#"}= t('task.levels.bilingual')
+      .tab-content
+        %table.fixed-table
+          %tr
+            %th.wider-cell
+              - skills_heading(@group.bilingual_tasks)
+
+          %tr
+            %th.wider-cell= tc(Student)
+
+            - @group.bilingual_tasks.each do |task|
+              %th= task.extended_number
+
+          - @group.students.bilingual.each do |student|
+            %tr
+              %td= student.name
+              - student.bilingual_tasks.each do |task|
+                %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
