@@ -55,11 +55,6 @@ wb.add_worksheet(name: name) do |sheet|
     max << score
   end
 
-  sum = []
-  scores_reporter.group_sum.each do |score|
-    sum << score
-  end
-
   easiness = []
   scores_reporter.group_easiness.each do |score|
     easiness << score.round(2)
@@ -118,13 +113,6 @@ wb.add_worksheet(name: name) do |sheet|
   sheet.add_row [
     t('.max'),
     max,
-    '',
-    ''
-  ].flatten, style: table_header, height: 28
-
-  sheet.add_row [
-    t('.sum'),
-    sum,
     '',
     ''
   ].flatten, style: table_header, height: 28

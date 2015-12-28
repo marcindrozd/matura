@@ -64,13 +64,6 @@
     %th
 
   %tr
-    %th= t('.sum')
-    - scores_reporter.group_sum.each do |score|
-      %th= score
-    %th
-    %th
-
-  %tr
     %th= t('.easiness')
     - scores_reporter.group_easiness.each do |score|
       %th= score.round(2)
