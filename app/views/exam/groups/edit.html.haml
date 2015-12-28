@@ -39,12 +39,14 @@
           %tr
             %th.wider-cell
               - skills_heading(@group.extended_tasks)
+            %th= t('total')
 
           %tr
             %th.wider-cell= tc(Student)
 
             - @group.extended_tasks.each do |task|
               %th= task.extended_number
+            %th
 
           - @group.students.extended.each do |student|
             %tr
@@ -62,12 +64,14 @@
           %tr
             %th.wider-cell
               - skills_heading(@group.bilingual_tasks)
+            %th= t('total')
 
           %tr
             %th.wider-cell= tc(Student)
 
             - @group.bilingual_tasks.each do |task|
               %th= task.extended_number
+            %th
 
           - @group.students.bilingual.each do |student|
             %tr
