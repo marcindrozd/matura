@@ -30,7 +30,7 @@ class Task < ActiveRecord::Base
   end
 
   def extended_number
-    description ? "#{number} - #{description}" : number
+    description.present? ? "#{number} - #{description}" : number
   end
 
   def max_points
