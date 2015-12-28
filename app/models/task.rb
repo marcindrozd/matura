@@ -26,7 +26,7 @@ class Task < ActiveRecord::Base
   end
 
   def full_number
-    number.to_s + ' - ' + I18n.t("task.levels.#{level}")
+    number.to_s + ' - ' + I18n.t("task.levels.#{level}") if valid?
   end
 
   def extended_number
