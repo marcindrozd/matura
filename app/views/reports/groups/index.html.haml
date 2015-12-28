@@ -4,14 +4,14 @@
 
   .actions
 
-%table
-  %tr
-    %th= t('order')
-    %th= ta(Group, :name)
-    %th= ta(Group, :kind)
+.row
+  .col-6
+    %table
+      %tr
+        %th= t('order')
+        %th= ta(Group, :name)
 
-  - @groups.each_with_index do |group, idx|
-    %tr
-      %td= idx + 1
-      %td= link_to group.name, reports_group_path(group)
-      %td= group.kind
+      - @groups.each_with_index do |group, idx|
+        %tr
+          %td= idx + 1
+          %td= link_to group.name, reports_group_path(group)

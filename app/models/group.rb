@@ -10,7 +10,6 @@ class Group < ActiveRecord::Base
   accepts_nested_attributes_for :students
 
   validates :name, presence: true, uniqueness: { scope: :exam }
-  validates :kind, presence: true, inclusion: { in: KINDS }
 
   def students_number
     students.standard.count

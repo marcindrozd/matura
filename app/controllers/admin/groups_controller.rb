@@ -9,7 +9,7 @@ class Admin::GroupsController < Admin::BaseController
 
   def create
     if @group.save
-      redirect_to edit_admin_group_path(@group)
+      redirect_to edit_admin_group_path(@group), notice: t('.group_created')
     else
       render :new
     end
@@ -20,7 +20,7 @@ class Admin::GroupsController < Admin::BaseController
 
   def update
     if @group.update(group_params)
-      redirect_to edit_admin_group_path(@group)
+      redirect_to edit_admin_group_path(@group), notice: t('.group_updated')
     else
       render :edit
     end
@@ -28,7 +28,7 @@ class Admin::GroupsController < Admin::BaseController
 
   def destroy
     @group.destroy
-    redirect_to admin_groups_path
+    redirect_to admin_groups_path, notice: t('.group_destroyed')
   end
 
   private
