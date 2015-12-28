@@ -14,6 +14,18 @@ pl:
         number_updated: Zaktualizowano liczbę uczniów
       destroy:
         student_deleted: Usunięto ucznia
+    tasks:
+      create:
+        task_created: Dodano zadanie
+      update:
+        task_updated: Zaktualizowano zadanie
+      destroy:
+        task_destroyed: Usunięto zadanie
+    user:
+      create:
+        user_created: Dodano użytkownika
+      update:
+        user_updated: Zaktualizowano użytkownika 
 
   exam:
     tasks:

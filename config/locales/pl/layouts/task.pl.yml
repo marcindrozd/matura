@@ -6,7 +6,8 @@ pl:
       index:
         add_task: Dodaj zadanie
       form:
-        general: Ogólne
+        general: Ogólne (pola oznaczone gwiazdką są wymagane)
+        secondary_number_explanation: 'Kolejność (wymagane tylko, gdy jest kilka zadań o tym samym numerze)'
         subtask_fields: Podzadania
         add_subtask: Nowe podzadanie
       subtask_fields:
