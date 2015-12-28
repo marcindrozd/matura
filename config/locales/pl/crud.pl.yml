@@ -7,7 +7,7 @@ pl:
         exam_updated: Egzamin zaktualizowany
       destroy:
         exam_destroyed: Egzamin usunięty
-    group:
+    groups:
       create:
         group_created: Dodano grupę
       update:
@@ -28,7 +28,7 @@ pl:
         task_updated: Zaktualizowano zadanie
       destroy:
         task_destroyed: Usunięto zadanie
-    user:
+    users:
       create:
         user_created: Dodano użytkownika
       update:
