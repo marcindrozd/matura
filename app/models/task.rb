@@ -26,11 +26,11 @@ class Task < ActiveRecord::Base
   end
 
   def full_number
-    number.to_s + ' - ' + I18n.t("task.levels.#{level}")
+    number.to_s + ' - ' + I18n.t("task.levels.#{level}") if valid?
   end
 
   def extended_number
-    description ? "#{number} - #{description}" : number
+    description.present? ? "#{number} - #{description_initials}" : number
   end
 
   def max_points
@@ -83,5 +83,9 @@ class Task < ActiveRecord::Base
 
   def self.levels_collection
     LEVELS.map { |l| [I18n.t("task.levels.#{l}"), l] }
+  end
+
+  def description_initials
+    description.scan(/\b\S/).join
   end
 end

@@ -1,8 +1,8 @@
 .row
   .nested-fields
     .col-4
-      = f.input :number
+      = f.input :number, input_html: { class: 'subtask-number-field' }
     .col-4
-      = f.input :max_points
+      = f.input :max_points, input_html: { class: 'subtask-points-field' }
     .col-4.col-last
       = link_to_remove_association t('.remove_subtask'), f, class: 'btn btn-danger'
