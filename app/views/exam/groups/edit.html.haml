@@ -25,7 +25,7 @@
 
           - @group.students.standard.each do |student|
             %tr
-              %td= student.name
+              %td= link_to student.name, edit_exam_student_task_path(student, student.standard_tasks.first)
               - student.standard_tasks.each do |task|
                 %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
 
