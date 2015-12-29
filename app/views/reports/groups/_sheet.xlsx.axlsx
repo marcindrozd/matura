@@ -135,6 +135,6 @@ wb.add_worksheet(name: name) do |sheet|
       scores,
       student.total_for_all_tasks,
       number_to_percentage(student.percentage)
-    ].flatten, style: default
+    ].flatten, style: default, width: 30
   end
 end

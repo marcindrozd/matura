@@ -1,6 +1,6 @@
 module XlsxHelper
 
-  def base_sz; 11; end
+  def base_sz; 12; end
   def big_sz; 16; end
   def text_width; 40; end
 
