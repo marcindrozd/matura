@@ -18,14 +18,14 @@
   %tr
     %th= t('.average_score')
     - scores_reporter.group_average_score.each do |score|
-      %th= score.round(1)
+      %th.accented= score.round(1)
     %th
     %th
 
   %tr
     %th= t('.average_percentage')
     - scores_reporter.group_average_percentage.each do |score|
-      %th= number_to_percentage(score)
+      %th.accented= number_to_percentage(score)
     %th
     %th
 
@@ -33,7 +33,7 @@
     %th= t('.median')
 
     - scores_reporter.group_median.each do |score|
-      %th= score
+      %th.accented= score
 
     %th
     %th
@@ -42,7 +42,7 @@
     %th= t('.mode')
 
     - scores_reporter.group_mode.each do |score|
-      %th= score
+      %th.accented= score
 
     %th
     %th
@@ -51,7 +51,7 @@
     %th= t('.min')
 
     - scores_reporter.group_min.each do |score|
-      %th= score
+      %th.accented= score
 
     %th
     %th
@@ -59,14 +59,14 @@
   %tr
     %th= t('.max')
     - scores_reporter.group_max.each do |score|
-      %th= score
+      %th.accented= score
     %th
     %th
 
   %tr
     %th= t('.easiness')
     - scores_reporter.group_easiness.each do |score|
-      %th= score.round(2)
+      %th.accented= score.round(2)
     %th
     %th
 
@@ -76,5 +76,5 @@
       - student.tasks.each do |score|
         %td= score
 
-      %td= student.total_for_all_tasks
-      %td= number_to_percentage(student.percentage)
+      %td.accented= student.total_for_all_tasks
+      %td.accented= number_to_percentage(student.percentage)

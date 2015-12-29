@@ -50,7 +50,7 @@
 
           - @group.students.extended.each do |student|
             %tr
-              %td= student.name
+              %td= link_to student.name, edit_exam_student_task_path(student, student.extended_tasks.first)
               - student.extended_tasks.each do |task|
                 %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
 
@@ -75,7 +75,7 @@
 
           - @group.students.bilingual.each do |student|
             %tr
-              %td= student.name
+              %td= link_to student.name, edit_exam_student_task_path(student, student.bilingual_tasks.first)
               - student.bilingual_tasks.each do |task|
                 %td= link_to task.full_score(student), edit_exam_student_task_path(student, task)
 
