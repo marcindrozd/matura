@@ -12,7 +12,7 @@ class Group < ActiveRecord::Base
   validates :name, presence: true, uniqueness: { scope: :exam }
 
   def students_number
-    students.standard.count
+    students.standard.count + students.extended.count + students.bilingual.count
   end
 
   def standard_tasks

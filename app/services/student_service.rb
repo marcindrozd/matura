@@ -55,7 +55,7 @@ class StudentService < ApplicationService
     subtasks = exam.subtasks.select { |s| s.level == level }
 
     subtasks.each do |subtask|
-      student.scores << subtask.scores.create
+      student.scores << subtask.scores.build
     end
 
     student.save

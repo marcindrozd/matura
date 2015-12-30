@@ -33,8 +33,8 @@
 
               %td= student.total_for_all_tasks('standard')
 
-  %li.tab-header-and-content
-    - if @group.extended_tasks.any?
+  - if @group.extended_tasks.any?
+    %li.tab-header-and-content
       %a.tab-link{:href => "#"}= t('task.levels.extended')
       .tab-content
         %table.fixed-table
@@ -58,8 +58,8 @@
 
               %td= student.total_for_all_tasks('extended')
 
-  %li.tab-header-and-content
-    - if @group.bilingual_tasks.any?
+  - if @group.bilingual_tasks.any?
+    %li.tab-header-and-content
       %a.tab-link{:href => "#"}= t('task.levels.bilingual')
       .tab-content
         %table.fixed-table
