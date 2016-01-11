@@ -27,5 +27,5 @@ Rails.application.routes.draw do
     put :set_current, on: :member
   end
 
-  root 'admin/exams#index'
+  root 'exam/groups#index'
 end

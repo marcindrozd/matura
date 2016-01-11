@@ -9,6 +9,6 @@ module SelectsHelper
   end
 
   def groups_for_select
-    current_exam.groups.order(:name)
+    Group.groups_for_select.map { |g| [ g.full_name, g.id ] }
   end
 end
