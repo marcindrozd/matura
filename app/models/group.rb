@@ -9,6 +9,8 @@ class Group < ActiveRecord::Base
 
   accepts_nested_attributes_for :students
 
+  scope :groups_for_select, -> { joins(:exam).order('exams.name', :name) }
+
   validates :name, presence: true, uniqueness: { scope: :exam }
 
   def students_number
@@ -25,5 +27,9 @@ class Group < ActiveRecord::Base
 
   def bilingual_tasks
     tasks.where(level: 'bilingual').order(:number, :secondary_number).uniq
+  end
+
+  def full_name
+    "#{exam.name} - #{name}"
   end
 end
