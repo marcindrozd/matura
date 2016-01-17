@@ -26,7 +26,6 @@ window.TableFilters =
   showHideMultiFilter: ->
     $('.multi-filter').on 'click', '.multi-filter-control', ->
       el = $(this).siblings('.multi-filter-box')
-      console.log el.hasClass('hidden')
       if ( el.hasClass('hidden') )
         el.removeClass('hidden')
         el.parents('th').siblings().find('.multi-filter-box').addClass('hidden')
