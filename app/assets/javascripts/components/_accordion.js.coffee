@@ -1,6 +1,10 @@
 $(document).ready ->
   $('.accordion-tabs-minimal').each (index) ->
-    $(this).children('li').first().children('a').addClass('is-active').next().addClass('is-open').show()
+    if request_params
+      $(this).children('li').first().children('a').removeClass('is-active')
+      $(this).children('li#' + request_params).children('a').addClass('is-active').next().addClass('is-open').show()
+    else
+      $(this).children('li').first().children('a').addClass('is-active').next().addClass('is-open').show()
     return
   $('.accordion-tabs-minimal').on 'click', 'li > a.tab-link', (event) ->
     if !$(this).hasClass('is-active')

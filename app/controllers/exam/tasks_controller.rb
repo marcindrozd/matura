@@ -16,7 +16,8 @@ class Exam::TasksController < Exam::BaseController
       if next_task
         redirect_to edit_exam_student_task_url(@student, next_task)
       else
-        redirect_to edit_exam_group_url(@student.group), notice: t('.score_updated')
+        task_level = @task.level != 'standard' ? @task.level : nil
+        redirect_to edit_exam_group_url(@student.group, group_type: task_level), notice: t('.score_updated')
       end
     else
       render :edit

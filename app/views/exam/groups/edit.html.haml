@@ -9,7 +9,7 @@
 
 %ul.accordion-tabs-minimal
   - if @group.standard_tasks.any?
-    %li.tab-header-and-content
+    %li.tab-header-and-content#standard
       %a.tab-link.is-active{:href => "#"}= t('task.levels.standard')
       .tab-content
         %table.fixed-table
@@ -34,7 +34,7 @@
               %td= student.total_for_all_tasks('standard')
 
   - if @group.extended_tasks.any?
-    %li.tab-header-and-content
+    %li.tab-header-and-content#extended
       %a.tab-link{:href => "#"}= t('task.levels.extended')
       .tab-content
         %table.fixed-table
@@ -59,7 +59,7 @@
               %td= student.total_for_all_tasks('extended')
 
   - if @group.bilingual_tasks.any?
-    %li.tab-header-and-content
+    %li.tab-header-and-content#bilingual
       %a.tab-link{:href => "#"}= t('task.levels.bilingual')
       .tab-content
         %table.fixed-table
