@@ -26,6 +26,20 @@ class ScoresReporter < ApplicationReporter
     @total_points_for_tasks ||= tasks.map { |t| t.max_points }.reduce(:+)
   end
 
+  def group_total_average
+    total = 0
+
+    students.each do |student|
+      total += tasks_scores(student).inject(:+)
+    end
+
+    total.to_f / students.count
+  end
+
+  def group_total_percentage
+    group_total_average / total_points_for_tasks.to_f * 100
+  end
+
   def group_average_score
     results = Array.new(tasks.count, 0)
     @students_results.each do |student|

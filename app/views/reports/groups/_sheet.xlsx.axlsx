@@ -124,6 +124,13 @@ wb.add_worksheet(name: name) do |sheet|
     ''
   ].flatten, style: table_header, height: 28
 
+  sheet.add_row [
+    t('.group_average'),
+    [dashes] * scores_reporter.tasks.count,
+    scores_reporter.group_total_average.round(1),
+    number_to_percentage(scores_reporter.group_total_percentage)
+  ].flatten, style: table_header, height: 28
+
   scores_reporter.students_results.each do |student|
     scores = []
     student.tasks.each do |score|
