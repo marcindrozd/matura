@@ -73,7 +73,7 @@
   %tr
     %th= t('.group_average')
     - scores_reporter.tasks.count.times do
-      %th.accented
+      %th.accented= dashes
     %th= scores_reporter.group_total_average.round(1)
     %th= number_to_percentage(scores_reporter.group_total_percentage)
 

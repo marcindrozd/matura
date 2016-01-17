@@ -29,6 +29,7 @@ pl:
         max: Max
         sum: Suma
         easiness: Łatwość
+        group_average: Średnia grupy
       table:
         average_score: Średnia
         average_percentage: 'Średnia %'

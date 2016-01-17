@@ -20,4 +20,8 @@ module ApplicationHelper
       end
     end
   end
+
+  def dashes(n = 3)
+    '-' * n
+  end
 end
