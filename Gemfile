@@ -1,33 +1,29 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.0'
-gem 'therubyracer'
-gem 'pg'
-gem 'uglifier', '>= 1.3.0'
-gem 'jbuilder', '~> 2.0'
-gem 'sdoc', '~> 0.4.0', group: :doc
-
-gem 'haml-rails'
+gem 'axlsx_rails'
+gem 'bourbon'
+gem 'cancancan', '~> 1.10'
+gem 'cocoon'
 gem 'coffee-rails', '~> 4.1.0'
+gem 'devise'
+gem 'font-awesome-rails'
+gem 'haml-rails'
+gem 'jbuilder', '~> 2.0'
+gem 'jquery-modal-rails'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'jquery-modal-rails'
-gem 'sass-rails', '~> 5.0'
-gem 'font-awesome-rails'
-
-gem 'normalize-rails'
-gem 'bourbon'
-gem 'neat'
-
-gem 'devise'
-gem 'cancancan', '~> 1.10'
-gem 'simple-navigation'
-gem 'ransack'
 gem 'kaminari'
+gem 'neat'
+gem 'normalize-rails'
+gem 'pg'
+gem 'rails', '4.2.0'
+gem 'ransack'
+gem 'sass-rails', '~> 5.0'
+gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form'
-gem 'cocoon'
-gem 'axlsx_rails'
-
+gem 'simple-navigation'
+gem 'therubyracer'
+gem 'uglifier', '>= 1.3.0'
 gem 'unicorn'
 
 group :development, :test do

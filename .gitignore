@@ -18,4 +18,3 @@
 /config/*.yml
 
 /coverage/*
-config/secrets.yml
