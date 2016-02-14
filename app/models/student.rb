@@ -35,15 +35,4 @@ class Student < ActiveRecord::Base
   def total_for_all_tasks(level)
     scores.joins(subtask: :task).where('tasks.level = ?', level).sum(:score)
   end
-
-  # def score_percentage(group, level)
-  #   group_tasks = group.tasks.where(level: level).uniq
-  #   total = group_tasks.any? ? group.tasks.where(level: level).uniq.map { |t| t.max_points }.reduce(:+) : 0
-
-  #   if total == 0
-  #     0
-  #   else
-  #     (total_for_all_tasks(level).to_f / total) * 100
-  #   end
-  # end
 end

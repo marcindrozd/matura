@@ -37,46 +37,6 @@ class Task < ActiveRecord::Base
     subtasks.sum(:max_points)
   end
 
-  def average_score(group, level)
-    result = group.students.where(level: level).map { |s| s.sum_scores_by_task(self.id) }.reduce(:+) / group.students.where(level: level).count.to_f
-    result.round(2)
-  end
-
-  def average_percentage(group, level)
-    group.students.where(level: level).map { |s| s.sum_scores_by_task(self.id) }.reduce(:+) / group.students.where(level: level).count.to_f
-  end
-
-  def median(group, level)
-    all_scores = group.students.where(level: level).map { |s| s.sum_scores_by_task(self.id) }
-    sorted = all_scores.sort!
-    len = sorted.length
-    (sorted[(len - 1) / 2] + sorted[len / 2]) / 2.0
-  end
-
-  def mode(group, level)
-    all_scores = group.students.where(level: level).map { |s| s.sum_scores_by_task(self.id) }
-    freq = all_scores.inject(Hash.new(0)) { |h,v| h[v] += 1; h }
-    all_scores.max_by { |v| freq[v] }
-  end
-
-  def min(group, level)
-    all_scores = group.students.where(level: level).map { |s| s.sum_scores_by_task(self.id) }
-    all_scores.min
-  end
-
-  def max(group, level)
-    all_scores = group.students.where(level: level).map { |s| s.sum_scores_by_task(self.id) }
-    all_scores.max
-  end
-
-  def total(group, level)
-    group.students.where(level: level).map { |s| s.sum_scores_by_task(self.id) }.reduce(:+)
-  end
-
-  def easiness(group, level)
-    total(group, level) / (group.students.where(level: level).count.to_f * max_points)
-  end
-
   def pretty_level
     I18n.t("task.levels.#{level}")
   end
