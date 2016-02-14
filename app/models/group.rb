@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  KINDS = %w{rozszerzona dwujęzyczna}
+  KINDS = %w{extended bilingual}
 
   belongs_to :exam
   has_and_belongs_to_many :teachers, class_name: User.name
