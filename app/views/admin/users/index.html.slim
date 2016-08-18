@@ -1,0 +1,29 @@
+= content_for :title, tc_few(User)
+
+.page-heading
+  .heading-accent
+  h1 = tc_few(User)
+
+  .actions
+    = link_to t('.new_user'), new_admin_user_path, class: 'btn btn-info'
+
+.users-list
+  table
+    tr
+      th = t('order')
+      th = ta(User, :username)
+      th = ta(User, :first_name)
+      th = ta(User, :last_name)
+      th = ta(User, :email)
+      th = ta(User, :role)
+      th = t('actions')
+
+    - @users.each_with_index do |user, idx|
+      tr
+        td = idx + 1
+        td = user.username
+        td = user.first_name
+        td = user.last_name
+        td = user.email
+        td = user.role
+        td = link_to t('edit'), edit_admin_user_path(user), class: 'btn btn-info'

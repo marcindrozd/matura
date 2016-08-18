@@ -1,0 +1,10 @@
+= content_for :title, t(".title")
+
+.page-heading
+  .heading-accent
+  h1 = t(".title")
+
+  .actions
+    = link_to t("back"), admin_groups_path, class: "btn btn-info"
+
+= render "form"

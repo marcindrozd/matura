@@ -1,0 +1,16 @@
+= content_for :title, @group.name
+
+.page-heading
+  .heading-accent
+  h1 = @group.name
+
+  .actions
+    = link_to(t("back"), admin_groups_path, class: "btn btn-info")
+    = link_to(t("delete"), admin_group_path(@group), class: "btn btn-danger", method: :destroy, data: { confirm: t("confirm") })
+
+.row
+  p
+    = "#{t('.number_of_students')}: #{@group.students_number}"
+    = link_to(t('.add_students'), admin_group_students_path(@group), class: "btn btn-info")
+
+= render "form"

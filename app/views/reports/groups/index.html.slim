@@ -1,0 +1,19 @@
+= content_for :title, t('.title')
+
+.page-heading
+  .heading-accent
+  h1 = t('.title')
+
+  .actions
+
+.row
+  .col-6
+    table
+      tr
+        th = t('order')
+        th = ta(Group, :name)
+
+      - @groups.each_with_index do |group, idx|
+        tr
+          td = idx + 1
+          td = link_to group.name, reports_group_path(group)

@@ -1,0 +1,30 @@
+= content_for :title, tc_few(Task)
+
+.page-heading
+  .heading-accent
+  h1 = tc_few(Task)
+
+  .actions
+    = link_to t('.add_task'), new_admin_task_path, class: 'btn btn-info'
+
+= filter_form_for @query, class: 'submitter-form' do |f|
+  table
+    thead.filters-table
+      tr
+        th = t('order')
+        th = f.sort_link 'number', text: ta(Task, :number)
+        th = tc_few(Subtask)
+        th = f.filter :skill, :collection, collection: task_skills_for_select, text: ta(Task, :skill)
+        th = f.filter :level, :collection, collection: task_levels_for_select, text: ta(Task, :level)
+        th = t('actions')
+
+      - @tasks.each_with_index do |task, idx|
+        tr
+          td = idx + 1
+          td = task.number
+          td = task.subtasks_list
+          td = task.skill
+          td = task.pretty_level
+          td = link_to t('edit'), edit_admin_task_path(task), class: 'btn btn-info'
+
+  = paginate @tasks

@@ -18,15 +18,15 @@ class Group < ActiveRecord::Base
   end
 
   def standard_tasks
-    tasks.where(level: 'standard').order(:number, :secondary_number).uniq
+    tasks.where(level: 'standard').order(:number, :secondary_number).distinct
   end
 
   def extended_tasks
-    tasks.where(level: 'extended').order(:number, :secondary_number).uniq
+    tasks.where(level: 'extended').order(:number, :secondary_number).distinct
   end
 
   def bilingual_tasks
-    tasks.where(level: 'bilingual').order(:number, :secondary_number).uniq
+    tasks.where(level: 'bilingual').order(:number, :secondary_number).distinct
   end
 
   def full_name

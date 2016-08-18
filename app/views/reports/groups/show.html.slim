@@ -1,0 +1,29 @@
+= content_for :title, @group.name
+
+.page-heading
+  .heading-accent
+  h1 = @group.name
+
+  .actions
+    = fa_link 'XLS', url_for(format: :xlsx), :download, class: 'btn btn-success'
+    = link_to t('back'), reports_groups_path, class: 'btn btn-info'
+
+ul.accordion-tabs-minimal
+  - if @standard_scores_reporter.tasks.any?
+    li.tab-header-and-content
+      a.tab-link.is-active{:href => "#"} = t('task.levels.standard')
+      .tab-content
+        = render 'table', scores_reporter: @standard_scores_reporter
+
+  - if @extended_scores_reporter.tasks.any?
+    li.tab-header-and-content
+      a.tab-link{:href => "#"} = t('task.levels.extended')
+      .tab-content
+        = render 'table', scores_reporter: @extended_scores_reporter
+
+
+  - if @bilingual_scores_reporter.tasks.any?
+    li.tab-header-and-content
+      a.tab-link{:href => "#"} = t('task.levels.bilingual')
+      .tab-content
+        = render 'table', scores_reporter: @bilingual_scores_reporter

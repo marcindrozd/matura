@@ -9,7 +9,7 @@ describe Admin::TasksController do
 
   describe '#index' do
     it 'renders page successfully' do
-      get :index, exam_id: exam.id
+      get :index, params: { exam_id: exam.id }
 
       expect(assigns(:tasks)).to match_array([task])
       expect(response).to be_success
@@ -18,7 +18,7 @@ describe Admin::TasksController do
 
   describe '#edit' do
     it 'renders page successfully' do
-      get :edit, id: task.id
+      get :edit, params: { id: task.id }
 
       expect(assigns(:task)).to eq(task)
       expect(response).to be_success
@@ -27,7 +27,7 @@ describe Admin::TasksController do
 
   describe '#new' do
     it 'renders page successfully' do
-      get :new, exam_id: exam.id
+      get :new, params: { exam_id: exam.id }
 
       expect(assigns(:task)).to be_instance_of(Task)
       expect(response).to be_success

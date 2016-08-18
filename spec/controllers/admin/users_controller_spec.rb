@@ -17,7 +17,7 @@ describe Admin::UsersController do
 
   describe '#edit' do
     it 'renders page successfully' do
-      get :edit, id: user.id
+      get :edit, params: { id: user.id }
 
       expect(assigns(:user)).to eq(user)
       expect(response).to be_success

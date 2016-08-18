@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.modal
 //= require cocoon
 //= require application/init
 //= require_tree ./components

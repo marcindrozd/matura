@@ -1,0 +1,19 @@
+= content_for :title, t('.title')
+
+.page-heading
+  .heading-accent
+  h1 = t('.title')
+
+  .actions
+
+table
+  tr
+    th = t('order')
+    th = ta(Group, :name)
+    th = t('actions')
+
+  - @groups.each_with_index do |group, idx|
+    tr
+      td = idx + 1
+      td = group.name
+      td = link_to t('.enter_scores'), edit_exam_group_path(group), class: 'btn btn-info'

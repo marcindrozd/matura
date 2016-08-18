@@ -1,0 +1,84 @@
+= content_for :title, @group.name
+
+.page-heading
+  .heading-accent
+  h1 = @group.name
+
+  .actions
+    = link_to t('back'), exam_groups_path, class: 'btn btn-info'
+
+ul.accordion-tabs-minimal
+  - if @group.standard_tasks.any?
+    li.tab-header-and-content#standard
+      a.tab-link.is-active{:href => "#"} = t('task.levels.standard')
+      .tab-content
+        table.fixed-table
+          tr
+            th.wider-cell
+              - skills_heading(@group.standard_tasks)
+            th = t('total')
+
+          tr
+            th.wider-cell = tc(Student)
+
+            - @group.standard_tasks.each do |task|
+              th = task.extended_number
+            th
+
+          - @group.students.standard.each do |student|
+            tr
+              td = link_to student.name, edit_exam_student_task_path(student, student.standard_tasks.first)
+              - student.standard_tasks.each do |task|
+                td = link_to task.full_score(student), edit_exam_student_task_path(student, task)
+
+              td = student.total_for_all_tasks('standard')
+
+  - if @group.extended_tasks.any?
+    li.tab-header-and-content#extended
+      a.tab-link{:href => "#"} = t('task.levels.extended')
+      .tab-content
+        table.fixed-table
+          tr
+            th.wider-cell
+              - skills_heading(@group.extended_tasks)
+            th= t('total')
+
+          tr
+            th.wider-cell = tc(Student)
+
+            - @group.extended_tasks.each do |task|
+              th = task.extended_number
+            th
+
+          - @group.students.extended.each do |student|
+            tr
+              td = link_to student.name, edit_exam_student_task_path(student, student.extended_tasks.first)
+              - student.extended_tasks.each do |task|
+                td = link_to task.full_score(student), edit_exam_student_task_path(student, task)
+
+              td = student.total_for_all_tasks('extended')
+
+  - if @group.bilingual_tasks.any?
+    li.tab-header-and-content#bilingual
+      a.tab-link{:href => "#"} = t('task.levels.bilingual')
+      .tab-content
+        table.fixed-table
+          tr
+            th.wider-cell
+              - skills_heading(@group.bilingual_tasks)
+            th= t('total')
+
+          tr
+            th.wider-cell = tc(Student)
+
+            - @group.bilingual_tasks.each do |task|
+              th = task.extended_number
+            th
+
+          - @group.students.bilingual.each do |student|
+            tr
+              td = link_to student.name, edit_exam_student_task_path(student, student.bilingual_tasks.first)
+              - student.bilingual_tasks.each do |task|
+                td = link_to task.full_score(student), edit_exam_student_task_path(student, task)
+
+              td = student.total_for_all_tasks('bilingual')
